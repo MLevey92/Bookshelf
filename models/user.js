@@ -4,6 +4,7 @@
 
 
 // extend our User model
+// users want an ID, username, password (bcrypt), saved books? idk
 
 
 
