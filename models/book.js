@@ -6,31 +6,53 @@ class Book extends Model {}
 
 Book.init(
   {
+    // ! id that WE assign
+    // ? Used to perform server actions later
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
     },
+    // ! Field from api
     title: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    text: {
+    // ! Field from api
+    first_sentence: {
       type: DataTypes.STRING,
+      allowNull: true,
     },
     // ! Field from api
     first_publish_year: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    //  ! Field from api
+    author_name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     // ! Field from api
     // ? Will be used to retrieve "Author Photos" later
     author_key: {
+      type: DataTypes.STRING,
+    },
+    // ! FOREIGN KEY
+    user_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: "Author",
-        key: "author_key",
+        model: "User",
+        key: "id",
+      },
+    },
+    // ! FOREIGN KEY
+    shelf_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "Shelf",
+        key: "id",
       },
     },
   },
