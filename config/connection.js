@@ -1,8 +1,7 @@
+// ! This connection is CRUCIAL for Heroku deployment
 // we will require sequelize and dotenv here
 const Sequelize = require('sequelize');
 require('dotenv').config();
-
-
 
 // create a sequelize const for accessing db
 let sequelize;
