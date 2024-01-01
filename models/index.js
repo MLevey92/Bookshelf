@@ -1,5 +1,5 @@
-const User = require("./User");
-const Book = require("./Book");
+const User = require("./user");
+const Book = require("./book");
 const Shelf = require("./Shelf");
 
 // User associations

@@ -1,7 +1,9 @@
-// this file is where you add the routes & router items
-const router = require('express').Router();
-const homeRoutes = require('./homeRoutes');
+// ! This file's GOOD to go
+const router = require("express").Router();
+const apiRoutes = require("./api/index");
+const homeRoutes = require("./homeRoutes");
 
-router.use('/', homeRoutes);
+router.use("/api", apiRoutes);
+router.use("/", homeRoutes);
 
 module.exports = router;
