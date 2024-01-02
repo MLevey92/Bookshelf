@@ -33,3 +33,28 @@ router.post("/books", async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
+
+// ! Route to delete a book by its id
+router.delete("/books/:id", async (req, res) => {
+  try {
+    const bookId = req.params.id;
+
+    // Use Sequelize to find the book by ID
+    const bookToDelete = await Book.findByPk(bookId);
+
+    // Check if the book exists
+    if (!bookToDelete) {
+      return res.status(404).json({ message: "Book not found" });
+    }
+
+    // Delete the book
+    await bookToDelete.destroy();
+
+    // Send a success response
+    res.status(200).json({ message: "Book deleted successfully" });
+  } catch (error) {
+    // Handle any errors that occur during the deletion process
+    console.error(error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+});

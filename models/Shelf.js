@@ -5,7 +5,7 @@ class Shelf extends Model {}
 
 Shelf.init(
   {
-    // ! id that WE give
+    // ! id that WE assign automatically
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -20,6 +20,7 @@ Shelf.init(
     // ! FOREIGN KEY
     user_id: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       references: {
         model: "User",
         key: "id",
