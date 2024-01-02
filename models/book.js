@@ -28,11 +28,13 @@ Book.init(
     // ? Will need to round it to a clean number before creating a Book (ex 4.6)
     ratings_average: {
       type: DataTypes.FLOAT,
+      // Sometimes there isn't one
       allowNull: true,
     },
     // ! Field from api
     first_sentence: {
       type: DataTypes.STRING,
+      // Sometimes there isn't one
       allowNull: true,
     },
     // ! Field from api
@@ -43,13 +45,15 @@ Book.init(
     //  ! Field from api
     author_name: {
       type: DataTypes.STRING,
-      allowNull: false,
+      // api DOES NOT ALWAYS provide this, but usually does
+      allowNull: true,
     },
     // ! Field from api
     // ? Will need to grab ONLY the first one from each book's array
     // ? Will be used to retrieve "Author Photos" later
     author_key: {
       type: DataTypes.STRING,
+      // api ALWAYS provides this
       allowNull: false,
     },
     // ! FOREIGN KEY
