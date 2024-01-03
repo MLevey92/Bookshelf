@@ -24,16 +24,20 @@
     <!-- Main Section -->
     <main>
         <section id="featured-books">
-            <h2>Some Books in the Library</h2>
+            <h2>Featured Books</h2>
             <!-- Include book cards or other featured content here -->
         </section>
     
         <section id="gallery">
+            <h2>Featured Gallery</h2>
             <div class="gallery-container">
                 {{#each galleryItems}}
                 <div class="gallery-item">
-                    <img src="{{imageUrl}}" alt="Gallery Item">
-                    <p>{{caption}}</p>
+                    <img src="{{imageUrl}}" alt="{{title}}">
+                    <p>{{title}} ({{first_publish_year}})</p>
+                    <p>Author: {{author_name}}</p>
+                    <p>Rating: {{ratings_average}}</p>
+                    <p>{{first_sentence}}</p>
                 </div>
                 {{/each}}
             </div>

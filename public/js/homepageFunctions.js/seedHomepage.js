@@ -59,7 +59,7 @@ async function processBooks() {
     const resultArray = [];
 
     for (const book of results) {
-      const processessedBook = {
+      const processedBook = {
         key: cleanupOLkey(book.key),
         title: book.title,
         first_publish_year: book.first_publish_year,
@@ -69,13 +69,30 @@ async function processBooks() {
         author_name: book.author_name[0] === "n/a" ? null : book.author_name[0],
       };
 
-      resultArray.push(processessedBook);
+      resultArray.push(processedBook);
     }
 
-    console.log(resultArray);
+    return resultArray; // Return the array of processed books
   } catch (error) {
     console.error("Error getting books", error.message);
+    return []; // Return an empty array in case of an error
   }
 }
+
+// Function to seed the homepage
+async function seedHomepage() {
+  try {
+    const galleryItems = await processBooks();
+    console.log("Gallery Items:", galleryItems);
+
+    // Now you can use the 'galleryItems' array for further processing or seeding
+    // For example, if you are using Sequelize, you might want to create records in the database.
+  } catch (error) {
+    console.error("Error seeding homepage", error.message);
+  }
+}
+
+// Call the seedHomepage function
+seedHomepage();
 
 processBooks();
