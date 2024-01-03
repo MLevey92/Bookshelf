@@ -1,1 +1,63 @@
 <p>homepage</p>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/css/style.css">
+    <title>Bookshelf App</title>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Bookshelf</h1>
+        <nav>
+            <ul>
+                <li><a href="/my-bookshelf">My Bookshelf</a></li>
+                <li><a href="/find-books">Find Books</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Section -->
+    <main>
+        <!-- Book Gallery -->
+        <div class="book-gallery">
+            {{#each books}}
+            <div class="book-item">
+                <img src=`https://covers.openlibrary.org/b/olid/{{Book.key}}-M.jpg` alt="Book Cover" class="book-cover">
+                <h3>{{Book.title}}</h3>
+                {{#if details}}
+                <p>Author: {{Book.author_name}}</p>
+                <p>Publish Date: {{Book.first_publish_year}}</p>
+                <!-- Add more details as needed -->
+                {{else}}
+                <p>No details available</p>
+            </div>
+            {{/each}}
+        </div>
+
+        <!-- Login Section -->
+        <div class="login-section">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+
+                <button type="submit">Login</button>
+            </form>
+        </div>
+
+    </main>
+
+    <script src="/js/script.js"></script>
+</body>
+
+</html>
