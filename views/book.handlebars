@@ -1,1 +1,22 @@
 {{! similar to book-details file, but more general info }}
+<!-- If the user is logged in, render the book content -->
+{{#if loggedIn}}
+<div class="book-card">
+    <img src=`https://covers.openlibrary.org/b/olid/{{Book.cover_edition_key}}-M.jpg` alt="Book Cover for {{Book.title}}" class="book-cover">
+    <div class="book-info">
+        <h2>{{Book.title}}</h2>
+        <p>Readers Rated this book: {{Book.ratings_average}} out of 5 </p>
+        <p>Author: {{Book.author_name}}</p>
+        <p>First Published Year: {{Book.first_publish_year}}</p>
+        <p>Book Intro: {{Book.first_sentence}}</p>
+    </div>
+    <div>
+        <button class="add-book-btn"
+            onclick="addToBookshelf('{{Book.title}}', '{{Book.author_name}}', '{{Book.cover_edition_key}}')">Add to
+            Bookshelf</button>
+    </div>
+</div>
+<!-- Otherwise, provide a link to login -->
+{{else}}
+<a href="/">You must login to build your bookshelf</a>
+{{/if}}

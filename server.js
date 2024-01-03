@@ -42,6 +42,17 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Define a route for the homepage
+app.get('/', async (req, res) => {
+  try {
+    const galleryItems = await processBooks();
+    res.render('homepage', { galleryItems });
+  } catch (error) {
+    console.error("Error rendering homepage", error.message);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
 //app.use(routes);
 app.use(routes);
 

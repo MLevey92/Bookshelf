@@ -49,8 +49,11 @@ async function processBooks() {
     const resultArray = [];
 
     for (const book of results) {
-      const processessedBook = {
+
+      const processedBook = {
+        
         cover_edition_key: book.cover_edition_key,
+
         title: book.title,
         first_publish_year: book.first_publish_year,
         ratings_average: roundToTenths(book.ratings_average) ?? null,
@@ -59,10 +62,14 @@ async function processBooks() {
         author_name: book.author_name[0] === "n/a" ? null : book.author_name[0],
       };
 
-      resultArray.push(processessedBook);
+      resultArray.push(processedBook);
     }
 
+
+    return resultArray; // Return the array of processed books
+//     Console.logging the already clean array
     console.log(resultArray);
+    
     for (const card of resultArray) {
       const cardFormat = `
         <div>
@@ -70,13 +77,32 @@ async function processBooks() {
         <p>${card.first_publish_year}</p>
         <p>${card.ratings_average}</p>
         <p>${card.first_sentence}</p>
-        <p>${author_name}</p>
+        <p>${card.author_name}</p>
         </div>`;
-      someContainerForEachCard.push(cardFormat);
+//       someContainerForEachCard.push(cardFormat);
     }
   } catch (error) {
     console.error("Error getting books", error.message);
+    return []; // Return an empty array in case of an error
   }
 }
+
+// TODO: THIS FUNCTION SHOULD MAKE THE ABOVE TEMPLATE LITERAL AND APPENDCHILD TO THE CONTAINER IN HOMEPAGE.
+// WHEN CALLING IT THE SECOND THE PAGE LOADS, IT'LL PROBABLY LOOK LIKE document.addEventListener("onload", seedHomepage(processBooks));
+// // Function to seed the homepage
+// async function seedHomepage() {
+//   try {
+//     const galleryItems = await processBooks();
+//     console.log("Gallery Items:", galleryItems);
+
+//     // Now you can use the 'galleryItems' array for further processing or seeding
+//     // For example, if you are using Sequelize, you might want to create records in the database.
+//   } catch (error) {
+//     console.error("Error seeding homepage", error.message);
+//   }
+// }
+
+// // Call the seedHomepage function
+// seedHomepage();
 
 processBooks();
