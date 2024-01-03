@@ -2,7 +2,7 @@
 <!-- If the user is logged in, render the book content -->
 {{#if loggedIn}}
 <div class="book-card">
-    <img src=`https://covers.openlibrary.org/b/olid/{{Book.key}}-M.jpg` alt="Book Cover" class="book-cover">
+    <img src=`https://covers.openlibrary.org/b/olid/{{Book.cover_edition_key}}-M.jpg` alt="Book Cover" class="book-cover">
     <div class="book-info">
         <h2>{{Book.title}}</h2>
         <p>Readers Rated this book: {{Book.ratings_average}} out of 5 </p>
