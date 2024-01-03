@@ -49,9 +49,7 @@ async function processBooks() {
     const resultArray = [];
 
     for (const book of results) {
-
       const processedBook = {
-        
         cover_edition_key: book.cover_edition_key,
 
         title: book.title,
@@ -64,28 +62,26 @@ async function processBooks() {
 
       resultArray.push(processedBook);
     }
-
-
-    return resultArray; // Return the array of processed books
-//     Console.logging the already clean array
+    //     Console.logging the already clean array
     console.log(resultArray);
-    
-    for (const card of resultArray) {
-      const cardFormat = `
-        <div>
-        <p>${card.title}</p>
-        <p>${card.first_publish_year}</p>
-        <p>${card.ratings_average}</p>
-        <p>${card.first_sentence}</p>
-        <p>${card.author_name}</p>
-        </div>`;
-//       someContainerForEachCard.push(cardFormat);
-    }
-  } catch (error) {
-    console.error("Error getting books", error.message);
-    return []; // Return an empty array in case of an error
-  }
-}
+    return resultArray; // Return the array of processed books
+
+    // for (const card of resultArray) {
+    //   const cardFormat = `
+    //     <div>
+    //     <p>${card.title}</p>
+    //     <p>${card.first_publish_year}</p>
+    //     <p>${card.ratings_average}</p>
+    //     <p>${card.first_sentence}</p>
+    //     <p>${card.author_name}</p>
+    //     </div>`;
+      //       someContainerForEachCard.push(cardFormat);
+//     }
+//   } catch (error) {
+//     console.error("Error getting books", error.message);
+//     return []; // Return an empty array in case of an error
+//   }
+// }
 
 // TODO: THIS FUNCTION SHOULD MAKE THE ABOVE TEMPLATE LITERAL AND APPENDCHILD TO THE CONTAINER IN HOMEPAGE.
 // WHEN CALLING IT THE SECOND THE PAGE LOADS, IT'LL PROBABLY LOOK LIKE document.addEventListener("onload", seedHomepage(processBooks));
