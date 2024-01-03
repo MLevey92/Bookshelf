@@ -1,0 +1,55 @@
+[
+  {
+    "key": "OL16813053W",
+    "title": "Words of Radiance",
+    "ratings_average": 4.8,
+    "first_sentence": "It was summer I remember. I was ten or eleven...",
+    "first_publish_year": 2012,
+    "author_name": "Brandon Sanderson",
+    "author_key": "OL1394865A",
+    "user_id": 1,
+    "shelf_id": 1
+  },
+  {
+    "key": "OL17610986W",
+    "title": "Dog Man",
+    "ratings_average": 4.6,
+    "first_sentence": "Even before he got electrocuted, Jason was having a rotten day",
+    "first_publish_year": 2016,
+    "author_name": "Dav Pilkey",
+    "author_key": "OL24815A",
+    "user_id": 1,
+    "shelf_id": 1
+  },
+  {
+    "key": "OL17834026W",
+    "title": "Oathbringer",
+    "ratings_average": 4.6,
+    "first_publish_year": 2017,
+    "author_name": "Brandon Sanderson",
+    "author_key": "OL1394865A",
+    "user_id": 1,
+    "shelf_id": 2
+  },
+  {
+    "key": "OL15401200W",
+    "title": "The Lost Hero",
+    "ratings_average": 4.5,
+    "first_sentence": "Even before he got electrocuted, Jason was having a rotten day",
+    "first_publish_year": 2010,
+    "author_name": "Rick Riordan",
+    "author_key": "OL30765A",
+    "user_id": 2,
+    "shelf_id": 3
+  },
+  {
+    "key": "OL17824318W",
+    "title": "Born a Crime",
+    "ratings_average": 4.6,
+    "first_publish_year": 2016,
+    "author_name": "Trevor Noah",
+    "author_key": "OL7406196A",
+    "user_id": 3,
+    "shelf_id": 3
+  }
+]
