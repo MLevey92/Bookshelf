@@ -15,9 +15,9 @@ Book.init(
     },
     // ! Field from api
     // ? Will need to run raw response through function 'cleanupOLkey' before creating a Book
-    key: {
+    cover_edition_key: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     // ! Field from api
     title: {
