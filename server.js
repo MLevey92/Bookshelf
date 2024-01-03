@@ -42,29 +42,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// to show a gallery of our favorite books on the homepage
-const galleryItems = [
-  {
-    imageUrl: 'https://covers.openlibrary.org/b/olid/OL20931086M-M.jpg',
-    caption: 'Redwall',
-  },
-  {
-    imageUrl: 'https://covers.openlibrary.org/b/olid/OL6152917M-M.jpg',
-    caption: 'The Doors of Perception',
-  },
-  {
-    imageUrl: 'https://covers.openlibrary.org/b/olid/OL36188337M-M.jpg',
-    caption: 'The Odyssey',
-  },
-  {
-    imageUrl: 'https://covers.openlibrary.org/b/olid/OL26451897M-M.jpg',
-    caption: 'The Fellowship of the Ring',
-  },
-];
-
-// Define a route for the homepage which has the gallery sample
-app.get('/', (req, res) => {
-  res.render('homepage', { galleryItems });
+// Define a route for the homepage
+app.get('/', async (req, res) => {
+  try {
+    const galleryItems = await processBooks();
+    res.render('homepage', { galleryItems });
+  } catch (error) {
+    console.error("Error rendering homepage", error.message);
+    res.status(500).send('Internal Server Error');
+  }
 });
 
 //app.use(routes);
