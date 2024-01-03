@@ -1,5 +1,3 @@
-<p>homepage</p>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,21 +23,21 @@
 
     <!-- Main Section -->
     <main>
-        <!-- Book Gallery -->
-        <div class="book-gallery">
-            {{#each books}}
-            <div class="book-item">
-                <img src=`https://covers.openlibrary.org/b/olid/{{Book.key}}-M.jpg` alt="Book Cover" class="book-cover">
-                <h3>{{Book.title}}</h3>
-                {{#if details}}
-                <p>Author: {{Book.author_name}}</p>
-                <p>Publish Date: {{Book.first_publish_year}}</p>
-                <!-- Add more details as needed -->
-                {{else}}
-                <p>No details available</p>
+        <section id="featured-books">
+            <h2>Some Books in the Library</h2>
+            <!-- Include book cards or other featured content here -->
+        </section>
+    
+        <section id="gallery">
+            <div class="gallery-container">
+                {{#each galleryItems}}
+                <div class="gallery-item">
+                    <img src="{{imageUrl}}" alt="Gallery Item">
+                    <p>{{caption}}</p>
+                </div>
+                {{/each}}
             </div>
-            {{/each}}
-        </div>
+        </section>
 
         <!-- Login Section -->
         <div class="login-section">
