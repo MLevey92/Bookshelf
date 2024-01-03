@@ -1,13 +1,3 @@
-function cleanupOLkey(url) {
-  // Split the URL by '/'
-  const parts = url.split("/");
-
-  // Get the last part of the array
-  const key = parts[parts.length - 1];
-
-  return key;
-}
-
 // ! This function cleans form inputs before fetching data with them
 // ? Turns this: "   the  lion   the   witch  and  the  wardrobe  " Into this: "the+lion+the+witch+and+the+wardrobe"
 function spacesToPlusesAndTrim(inputString) {
@@ -73,6 +63,17 @@ async function processBooks() {
     }
 
     console.log(resultArray);
+    for (const card of resultArray) {
+      const cardFormat = `
+        <div>
+        <p>${card.title}</p>
+        <p>${card.first_publish_year}</p>
+        <p>${card.ratings_average}</p>
+        <p>${card.first_sentence}</p>
+        <p>${author_name}</p>
+        </div>`;
+      someContainerForEachCard.push(cardFormat);
+    }
   } catch (error) {
     console.error("Error getting books", error.message);
   }
