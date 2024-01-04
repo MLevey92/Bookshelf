@@ -27,3 +27,7 @@
     object-fit: cover;
     border-radius: 8px; /*creates rounded corners*/
 }
+
+.seed-card {
+    border: 1px solid black;
+}

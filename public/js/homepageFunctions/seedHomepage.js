@@ -65,12 +65,13 @@ async function processBooks() {
     let cardFormats = "";
 
     for (const book of resultArray) {
+      // TODO: give the stuff in cardFormat classes that you can style in the CSS
       const cardFormat = `
-        <div>
+        <div class="seed-card">
+          <h4>Title: ${book.title}</h4>
           <img src="https:covers.openlibrary.org/b/olid/${
             book.cover_edition_key
           }-M.jpg"/>
-          <h4>Title: ${book.title}</h4>
           <p>Year: ${book.first_publish_year}</p>
           <p>Rating: ${book.ratings_average}</p>
           ${
