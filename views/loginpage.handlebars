@@ -1,4 +1,4 @@
-{{! this file we will add html formatting the login section }}
+{{!-- ! This file's GOOD to go, add classes and style them in CSS --}}
 <h3>Login:</h3>
 <form class="login-form">
   <label for="username">Username:</label>
@@ -37,12 +37,11 @@
 
   <br />
 
-  <!-- Submit button -->
   <button type="submit">Register</button>
 </form>
 {{#if error}}
   <p class="error">{{error}}</p>
 {{/if}}
 
-<script src="/js/loginHandle.js"></script>
+{{! loginHandle.js is already linked in main.handlebars conditionally }}
 <script src="/js/loginpageFunctions/registerUser.js"></script>
