@@ -8,6 +8,13 @@
     --dark: #182c23;
     --error: rgb(228, 46, 1);
     --border-radius: 0.3rem;
+
+    --background: #ceb9a9;
+    --text: #803e00;
+}
+
+body {
+    margin: 0px;
 }
 
 .bookshelf-container {
@@ -30,4 +37,42 @@
 
 .seed-card {
     border: 1px solid black;
+}
+
+
+/* header, footer, navbar, and links */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--background);
+    padding: 10px;
+}
+
+footer {
+    background-color: var(--background);
+}
+
+.main-title {
+    margin-left: 20px;
+}
+
+ul {
+    list-style-type: none;
+    padding-top: 1em;
+}
+
+li {
+    display: inline;
+    padding: 10px;
+}
+
+a {
+    color: var(--text);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+    background-color: 
 }
