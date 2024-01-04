@@ -10,6 +10,7 @@
     --border-radius: 0.3rem;
 
     --background: #ceb9a9;
+    --background-light: #e7dcd4;
     --text: #803e00;
 }
 
@@ -70,9 +71,12 @@ li {
 a {
     color: var(--text);
     text-decoration: none;
+    padding: 5px;
+    border-radius: 2px;
 }
 
 a:hover {
     text-decoration: none;
-    background-color: 
+    background-color: var(--background-light);
+    color: var(--text);
 }
