@@ -13,6 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const bookshelfContainer = document.querySelector('.bookshelf-container');
   const loggedIn = localStorage.getItem('token') !== null;
 
+  bookshelfContainer.style.backgroundImage = 'url("./public/assets/bookshelf-background.jpg")';
+
   const createBookDiv = (book) => {
     const bookDiv = document.createElement('div');
     bookDiv.classList.add('book-card', 'box'); // box class is used in Bulma
