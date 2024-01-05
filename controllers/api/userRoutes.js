@@ -1,3 +1,4 @@
+// ! This file's GOOD to go, unless we wanna let the user change their email or something later on
 const router = require("express").Router();
 const { User } = require("../../models");
 const bcrypt = require("bcrypt");
