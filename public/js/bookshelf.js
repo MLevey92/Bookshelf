@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const createBookDiv = (book) => {
     const bookDiv = document.createElement('div');
-    bookDiv.classList.add('book-card');
+    bookDiv.classList.add('book-card', 'box'); // box class is used in Bulma
     bookDiv.dataset.title = book.title;
     bookDiv.dataset.author = book.author;
     bookDiv.dataset.coverEditionKey = book.coverEditionKey;
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const bookCover = document.createElement('img');
     bookCover.src = `https://covers.openlibrary.org/b/olid/${book.coverEditionKey}-M.jpg`;
     bookCover.alt = `Book Cover for ${book.title}`;
-    bookCover.classList.add('book-cover');
+    bookCover.classList.add('book-cover', 'is-180x290'); // size class is used in Bulma
     bookDiv.appendChild(bookCover);
 
     bookshelfContainer.appendChild(bookDiv);
