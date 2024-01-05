@@ -1,6 +1,6 @@
 [
   {
-    "key": "OL16813053W",
+    "cover_edition_key": "OL34793864M",
     "title": "Words of Radiance",
     "ratings_average": 4.8,
     "first_sentence": "It was summer I remember. I was ten or eleven...",
@@ -11,7 +11,7 @@
     "shelf_id": 1
   },
   {
-    "key": "OL17610986W",
+    "cover_edition_key": "OL26215091M",
     "title": "Dog Man",
     "ratings_average": 4.6,
     "first_sentence": "Even before he got electrocuted, Jason was having a rotten day",
@@ -22,7 +22,7 @@
     "shelf_id": 1
   },
   {
-    "key": "OL17834026W",
+    "cover_edition_key": "OL26765993M",
     "title": "Oathbringer",
     "ratings_average": 4.6,
     "first_publish_year": 2017,
@@ -32,7 +32,7 @@
     "shelf_id": 2
   },
   {
-    "key": "OL15401200W",
+    "cover_edition_key": "OL28556907M",
     "title": "The Lost Hero",
     "ratings_average": 4.5,
     "first_sentence": "Even before he got electrocuted, Jason was having a rotten day",
@@ -43,7 +43,7 @@
     "shelf_id": 3
   },
   {
-    "key": "OL17824318W",
+    "cover_edition_key": "OL26412866M",
     "title": "Born a Crime",
     "ratings_average": 4.6,
     "first_publish_year": 2016,

@@ -1,12 +1,31 @@
 const router = require("express").Router();
 const { Book } = require("../../models");
 
+// ! Route to get all books
+router.get("/", async (req, res) => {
+  try {
+    // Fetch all books from the database
+    const allBooks = await Book.findAll();
+
+    // Map the books to plain objects
+    const books = allBooks.map((book) => book.get({ plain: true }));
+
+    // Respond with the list of books
+    res.status(200).json(books);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
 // ! Create a new Book
-router.post("/books", async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     // Extract book data from the request body
     const {
+      cover_edition_key,
       title,
+      ratings_average,
       first_sentence,
       first_publish_year,
       author_name,
@@ -17,7 +36,9 @@ router.post("/books", async (req, res) => {
 
     // Create a new book in the database
     const newBook = await Book.create({
+      cover_edition_key,
       title,
+      ratings_average,
       first_sentence,
       first_publish_year,
       author_name,
@@ -34,8 +55,10 @@ router.post("/books", async (req, res) => {
   }
 });
 
+module.exports = router;
+
 // ! Route to delete a book by its id
-router.delete("/books/:id", async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     const bookId = req.params.id;
 

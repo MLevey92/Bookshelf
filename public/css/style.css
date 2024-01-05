@@ -1,0 +1,78 @@
+/* created root items for future styling consistency*/
+:root {
+    --primary: #3d5852;
+    --secondary: #86938f;
+    --tertiary: #5e877f;
+    --quatrinary: #6c6b67;
+    --light: #e3e4e3;
+    --dark: #182c23;
+    --error: rgb(228, 46, 1);
+    --border-radius: 0.3rem;
+
+    --background: #ceb9a9;
+    --text: #803e00;
+}
+
+body {
+    margin: 0px;
+}
+
+.bookshelf-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.book-card {
+    width: 180px;
+    height: 290px;
+    margin: 10px;
+}
+
+.book-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px; /*creates rounded corners*/
+}
+
+.seed-card {
+    border: 1px solid black;
+}
+
+
+/* header, footer, navbar, and links */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--background);
+    padding: 10px;
+}
+
+footer {
+    background-color: var(--background);
+}
+
+.main-title {
+    margin-left: 20px;
+}
+
+ul {
+    list-style-type: none;
+    padding-top: 1em;
+}
+
+li {
+    display: inline;
+    padding: 10px;
+}
+
+a {
+    color: var(--text);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+    
+}

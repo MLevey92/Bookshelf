@@ -1,1 +1,29 @@
-<p>homepage</p>
+<body>
+  <!-- Main Section -->
+  <main>
+    <section id="featured-books">
+      <h2>Featured Books</h2>
+      <!-- Include book cards or other featured content here -->
+    </section>
+
+    <section id="gallery">
+      <h2>Featured Gallery</h2>
+      <div class="gallery-container">
+        {{#each galleryItems}}
+          <div class="gallery-item">
+            {{cover_edition_key}}<img
+              src="https://covers.openlibrary.org/b/olid/{{cover_edition_key}}-M.jpg"
+              alt="{{title}}"
+            />
+            <p>{{title}} ({{first_publish_year}})</p>
+            <p>Author: {{author_name}}</p>
+            <p>Rating: {{ratings_average}}</p>
+            <p>{{first_sentence}}</p>
+          </div>
+        {{/each}}
+      </div>
+    </section>
+  </main>
+
+  <script src="/js/homepageFunctions/seedHomepage.js"></script>
+</body>
