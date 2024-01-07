@@ -8,6 +8,7 @@ function spacesToPlusesAndTrim(inputString) {
   return resultString;
 }
 
+
 // ! function to make a fetch request (GET) with a given URL
 async function fetchData(url) {
   try {
@@ -35,6 +36,25 @@ async function fetchData(url) {
 // ! Lil function to turn 4.7619047 into 4.8
 function roundToTenths(number) {
   return Number(number.toFixed(1));
+}
+
+function getFirstEnglishSentence(sentences) {
+  // Function to detect if a given text is likely in English
+  function isEnglish(text) {
+    // Basic check: if the text contains common English words, assume it's English
+    const englishWords = ["the", "and", "is", "of", "in", "to", "it", "with"];
+    return englishWords.some((word) => text.toLowerCase().includes(word));
+  }
+
+  // Find the first sentence that is likely in English
+  for (const sentence of sentences) {
+    if (isEnglish(sentence)) {
+      return sentence.trim();
+    }
+  }
+
+  // Return null if no English sentence is found
+  return null;
 }
 
 // --------------------------------------------------------------------------------------
