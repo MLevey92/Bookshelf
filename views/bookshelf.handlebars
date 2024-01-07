@@ -1,12 +1,13 @@
 {{! This page and its functionality is for logged in users only}}
 
 {{#if logged_in}}
-  <h1>{{user.username}}'s Bookshelf</h1>
-  <div class="bookshelf-container">
 
-    {{log user}}
-    <!-- saved books would line up here as divs of cover photo img src items -->
-  </div>
+<h1>{{user.username}}'s Bookshelf</h1>
+<div class="bookshelf-container">
+  <!-- saved books would line up here as divs of cover photo igit mg src items -->
+  //{{log user}} was removed from right here during merge conflict. Feel free to re-add if it served a purpose
+</div>
 {{else}}
-  <p>You must login to view your bookshelf. <a href="/">Login</a></p>
+<p>You must log in to view your bookshelf. <a href="/">Login</a></p>
+
 {{/if}}
