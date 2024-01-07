@@ -1,10 +1,13 @@
 const formEl = document.getElementById("searchForm");
 const resultsEl = document.getElementById("results");
 const inputEl = document.getElementById("input");
+const searchResults = document.querySelector('#results');
 
 
 function formHandler(event) {
     event.preventDefault();
+
+    searchResults.innerHTML='';
 
     const searchBy = getRadioValue();
     const queryURL = `https://openlibrary.org/search.json?${searchBy}=${spacesToPlusesAndTrim(inputEl.value)}&subject=book&fields=title,cover_edition_key,author_name,author_key,first_sentence,first_publish_year,ratings_average`;
@@ -12,6 +15,7 @@ function formHandler(event) {
     appendResults(queryURL);
 }
 
+//simply gets the data and returns it
 async function fetchData(url) {
     try {
         const response = await fetch(url);
@@ -30,6 +34,7 @@ async function fetchData(url) {
 
 }
 
+//Calls fetch data, formats result, and creates search result section
 async function appendResults(queryURL) {
   try {
     const results = await fetchData(queryURL);
@@ -50,46 +55,69 @@ async function appendResults(queryURL) {
         : null,
     }));
 
-    let cardFormats = "";
+    //create and append to searchResults
+    for (let i=0;i<resultArray.length;i++) {
+        var searchCard = document.createElement('div');
+        searchCard.classList.add("seed-card");
 
-    for (const book of resultArray) {
-      // TODO: give the stuff in cardFormat classes that you can style in the CSS
-      const cardFormat = `
-        <div class="seed-card">
-          <h4>Title: ${book.title}</h4>
-          <img src="https:covers.openlibrary.org/b/olid/${
-            book.cover_edition_key
-          }-M.jpg"/>
-          <p>Year: ${book.first_publish_year}</p>
-          <p>Rating: ${book.ratings_average}</p>
-          <!-- cutting first sentence to make search sleeker
-          ${
-            book.first_sentence !== null
-              ? `<p>First Sentence: ${book.first_sentence}</p>`
-              : ""
-          }
-          -->
-          <p>Author: ${book.author_name}</p>
-          {{#if logged_in}}
-            <p>add book</p>
-          {{else}}
-            <p>login to add book</p>
-          {{/if}}
-        </div>`;
+        var titleEl = document.createElement('h4');
+        titleEl.textContent = resultArray[i].title;
+        searchCard.appendChild(titleEl);
 
-      cardFormats += cardFormat;
+        var imgEl = document.createElement('img');
+        imgEl.src = src=`https:covers.openlibrary.org/b/olid/${resultArray[i].cover_edition_key}-M.jpg`
+        searchCard.appendChild(imgEl);
+
+        var yearEl = document.createElement('p');
+        yearEl.textContent = `Year: ${resultArray[i].first_publish_year}`;
+        searchCard.appendChild(yearEl);
+
+        var ratingEl = document.createElement('p');
+        ratingEl.textContent = `Rating: ${resultArray[i].ratings_average}`;
+        searchCard.appendChild(ratingEl);
+
+        var authorEl = document.createElement('p');
+        authorEl.textContent = `Author: ${resultArray[i].author_name}`;
+        searchCard.appendChild(authorEl);
+        
+        //this button will call postBook with book info corresponding to the pressed button
+        var addButton = document.createElement('button');
+        addButton.textContent = "Add to Shelf";
+        
+        //These add properties to each button corresponding to it's book info
+        addButton.title = resultArray[i].title;
+        addButton.cek = resultArray[i].cover_edition_key;
+        addButton.ratingAvg = resultArray[i].ratings_average;
+        addButton.fs = resultArray[i].first_sentence;
+        addButton.year = resultArray[i].first_publish_year;
+        addButton.a_name = resultArray[i].author_name;
+        addButton.a_key = resultArray[i].author_key;
+        addButton.addEventListener('click', function(e) {
+            postBook(e.target.cek, e.target.title, e.target.ratingAvg, e.target.fs, e.target.year, e.target.a_name, e.target.a_key);
+        });
+        searchCard.appendChild(addButton);
+
+        searchResults.appendChild(searchCard);
     }
 
-    const featuredBooks = document.querySelector("#results");
-    featuredBooks.innerHTML = cardFormats; // Update innerHTML once
-
-    // Console logging the already clean array
-    console.log(resultArray);
   } catch (error) {
     console.error("Error getting books", error.message);
     return []; // Return an empty array in case of an error
   }
 }
+
+function postBook(cek, title, rating, fs, year, a_name, a_key) {
+    //log just checks the info. TODO: change this to a POST request
+    console.log(`Posting a new book with info:
+                    cover_edition_key: ${cek}
+                    title: ${title},
+                    ratings_average: ${rating},
+                    first_sentence: ${fs},
+                    first_publish_year: ${year},
+                    author_name: ${a_name},
+                    author_key: ${a_key}`);
+}
+
 
 //Get value of checked radio button, used in query
 function getRadioValue() {
@@ -117,4 +145,5 @@ function roundToTenths(number) {
   return Number(number.toFixed(1));
 }
 
+//form submit handler
 formEl.addEventListener("submit", formHandler)
