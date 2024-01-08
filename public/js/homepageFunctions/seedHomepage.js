@@ -1,61 +1,3 @@
-// ! This function cleans form inputs before fetching data with them
-// ? Turns this: "   the  lion   the   witch  and  the  wardrobe  " Into this: "the+lion+the+witch+and+the+wardrobe"
-function spacesToPlusesAndTrim(inputString) {
-  // Trimming whitespace from both ends first
-  inputString = inputString.trim();
-  // Use the replace method with a regular expression to replace all spaces with '+'
-  const resultString = inputString.replace(/ +/g, "+");
-  return resultString;
-}
-
-
-// ! function to make a fetch request (GET) with a given URL
-async function fetchData(url) {
-  try {
-    // Step 1: Use fetch to make the request
-    const response = await fetch(url);
-
-    // Step 2: Wait for the response
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-
-    // Step 3: Parse the JSON data
-    let data = await response.json();
-    // each Book is nestled in the 'docs' array from the api
-    data = data.docs;
-
-    // You can now work with the 'data' object
-    // console.log(data);
-    return data;
-  } catch (error) {
-    console.error("Error during fetch:", error.message);
-  }
-}
-
-// ! Lil function to turn 4.7619047 into 4.8
-function roundToTenths(number) {
-  return Number(number.toFixed(1));
-}
-
-function getFirstEnglishSentence(sentences) {
-  // Function to detect if a given text is likely in English
-  function isEnglish(text) {
-    // Basic check: if the text contains common English words, assume it's English
-    const englishWords = ["the", "and", "is", "of", "in", "to", "it", "with"];
-    return englishWords.some((word) => text.toLowerCase().includes(word));
-  }
-
-  // Find the first sentence that is likely in English
-  for (const sentence of sentences) {
-    if (isEnglish(sentence)) {
-      return sentence.trim();
-    }
-  }
-
-  // Return null if no English sentence is found
-  return null;
-}
 
 // --------------------------------------------------------------------------------------
 
@@ -73,7 +15,7 @@ async function processBooks() {
       ratings_average: book.ratings_average
         ? roundToTenths(book.ratings_average)
         : null,
-      first_sentence: book.first_sentence ?? null,
+      first_sentence: getFirstEnglishSentence(book.first_sentence),
       author_key: book.author_key ? book.author_key[0] : null,
       author_name: book.author_name
         ? book.author_name[0] === "n/a"
@@ -100,6 +42,7 @@ async function processBooks() {
               : ""
           }
           <p>Author: ${book.author_name}</p>
+          <button class="save-button">Save this!</button>
         </div>`;
 
       cardFormats += cardFormat;
@@ -108,8 +51,20 @@ async function processBooks() {
     const featuredBooks = document.querySelector("#featured-books");
     featuredBooks.innerHTML = cardFormats; // Update innerHTML once
 
-    // Console logging the already clean array
-    console.log(resultArray);
+    const saveButtons = document.querySelectorAll(".save-button");
+    saveButtons.forEach((button, index) => {
+      button.addEventListener("click", async () => {
+        // Access the corresponding book information using the resultArray
+        const selectedBook = resultArray[index];
+        handleSaveButtonClick(selectedBook, index);
+
+        // ? Log the information to the console (you can replace this with your actual save logic)
+        // console.log("Save this book:", selectedBook);
+      });
+    });
+
+    // ? Console logging the already clean array
+    // console.log(resultArray);
   } catch (error) {
     console.error("Error getting books", error.message);
     return []; // Return an empty array in case of an error

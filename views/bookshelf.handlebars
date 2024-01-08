@@ -1,13 +1,34 @@
 {{! This page and its functionality is for logged in users only}}
 
 {{#if logged_in}}
+  {{log user}}
+  {{log books}}
+  {{log shelves}}
 
-<h1>{{user.username}}'s Bookshelf</h1>
-<div class="bookshelf-container">
-  <!-- saved books would line up here as divs of cover photo igit mg src items -->
-  //{{log user}} was removed from right here during merge conflict. Feel free to re-add if it served a purpose
-</div>
+  <h1>{{user.username}}'s Library</h1>
+
+  <h2>Your Bookshelves</h2>
+  {{#each shelves}}
+  <div class="my-shelves">
+    <p>{{this.name}}</p>
+  </div>
+  {{/each}}
+
+  <h2>Your Saved Books</h2>
+  {{#each books}}
+    <div class="saved-books">
+      <h3>{{this.title}}</h3>
+      <img
+        src="https:covers.openlibrary.org/b/olid/{{this.cover_edition_key}}-M.jpg"
+      />
+      <p>{{this.first_sentence}}</p>
+      <p>First published in {{this.first_publish_year}}</p>
+      <p>Average Rating: {{this.ratings_average}}</p>
+      <p>Author: {{this.author_name}}</p>
+    </div>
+  {{/each}}
+
 {{else}}
-<p>You must log in to view your bookshelf. <a href="/">Login</a></p>
-
+  <p class="login-prompt">You must log in to view your bookshelf.
+    <a href="/login">Login</a></p>
 {{/if}}
