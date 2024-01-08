@@ -15,8 +15,8 @@ router.get("/", async (req, res) => {
 // ! Create a new shelf
 router.post("/", async (req, res) => {
   try {
-    const { name, user_id } = req.body;
-    const newShelf = await Shelf.create({ name, user_id });
+    const { name } = req.body;
+    const newShelf = await Shelf.create({ name, user_id: req.session.user_id });
     res.status(201).json(newShelf);
   } catch (error) {
     console.error(error);

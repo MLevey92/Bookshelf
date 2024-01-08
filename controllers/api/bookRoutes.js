@@ -67,22 +67,6 @@ router.post("/", async (req, res) => {
   }
 });
 
-// router.post("/", async (req, res) => {
-//   try {
-//     // Extract book data from the request body
-//     const newBook = await Book.create({
-//       ...req.body,
-//       user_id: req.session.user_id,
-//     });
-
-//     // Respond with the newly created book
-//     res.status(201).json(newBook);
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ error: "Internal Server Error" });
-//   }
-// });
-
 // ! Route to delete a book by its id
 router.delete("/:id", async (req, res) => {
   try {
