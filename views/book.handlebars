@@ -12,7 +12,7 @@
         <p>Book Intro: {{Book.first_sentence}}</p>
     </div>
 
-    {{#if loggedIn}}
+    {{#if logged_in}}
     <div>
         <button class="add-book-btn"
             onclick="addToBookshelf('{{Book.title}}', '{{Book.author_name}}', '{{Book.cover_edition_key}}')">Add to

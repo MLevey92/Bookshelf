@@ -17,7 +17,7 @@ const loginFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace("/");
+      document.location.replace("/bookshelf");
     } else {
       const errorData = await response.json();
       console.error("Failed to log in:", errorData.message);

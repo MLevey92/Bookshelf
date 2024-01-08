@@ -1,42 +1,41 @@
-<!DOCTYPE html>
 <html lang="en">
 
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/style.css" />
     <title>Bookshelf</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <header>
-        <h1 class="main-title"><a href="/">Bookshelf</a></h1>
-        <nav>
-            <ul>
-                {{! TODO: Will change the name of hrefs once homeRoutes defined }}
-                <li><a href="/bookshelf">My Bookshelf</a></li>
-                <li><a href="/findbooks">Find Books</a></li>
-                <li>
-                    {{#if logged_in}}
-                    <a id="logoutButton" href="/login">Logout</a>
-                    {{else}}
-                    <a id="loginButton" href="/login">Login</a>
-                    {{/if}}
-                </li>
-            </ul>
-        </nav>
+      <h1 class="main-title"><a href="/">Bookshelf</a></h1>
+      <nav>
+        <ul>
+          {{! TODO: Will change the name of hrefs once homeRoutes defined }}
+          <li><a href="/bookshelf">My Bookshelf</a></li>
+          <li><a href="/findbooks">Find Books</a></li>
+          <li>
+            {{#if logged_in}}
+              <a id="logoutButton" href="/login">Logout</a>
+            {{else}}
+              <a id="loginButton" href="/login">Login</a>
+            {{/if}}
+          </li>
+        </ul>
+      </nav>
 
-        {{#if logged_in}}
+      {{#if logged_in}}
         <h3>Logged In!!!</h3>
-        {{/if}}
+      {{/if}}
     </header>
 
     <main>
-        {{{body}}}
+      {{{body}}}
     </main>
 
     <!-- If they're logged in, show nothing. Otherwise show the login-form -->
-    {{#if logged_in}}
+    {{!-- {{#if logged_in}}
     <br />
     {{else}}
     <form class="login-form">
@@ -50,20 +49,22 @@
 
         <button type="submit">Login</button>
     </form>
-    {{/if}}
+    {{/if}} --}}
 
     <!-- Footer -->
     <footer>
-        <p>&copy; {{currentYear}} Your Website Name. All rights reserved.</p>
-        <!-- Add more footer content as needed -->
+      <p>&copy; {{currentYear}} Your Website Name. All rights reserved.</p>
+      <!-- Add more footer content as needed -->
     </footer>
-    
+
+    <script src="/js/helpfulFunctions.js"></script>
+
     {{#if logged_in}}
-    <script src="/js/logoutHandle.js"></script>
+      <script src="/js/logoutHandle.js"></script>
     {{else}}
-    <script src="/js/loginHandle.js"></script>
+      <script src="/js/loginHandle.js"></script>
     {{/if}}
 
-</body>
+  </body>
 
 </html>

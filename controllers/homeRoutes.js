@@ -27,7 +27,16 @@ router.get("/bookshelf", async (req, res) => {
         include: [
           {
             model: Book,
-            attributes: ["id", "title", "cover_edition_key", "author_name"],
+            attributes: [
+              "id",
+              "title",
+              "cover_edition_key",
+              "author_name",
+              "author_key",
+              "first_sentence",
+              "first_publish_year",
+              "ratings_average",
+            ],
           },
           {
             model: Shelf,
@@ -35,7 +44,16 @@ router.get("/bookshelf", async (req, res) => {
             include: [
               {
                 model: Book,
-                attributes: ["id", "title", "cover_edition_key", "author_name"],
+                attributes: [
+                  "id",
+                  "title",
+                  "cover_edition_key",
+                  "author_name",
+                  "author_key",
+                  "first_sentence",
+                  "first_publish_year",
+                  "ratings_average",
+                ],
               },
             ],
           },
@@ -66,7 +84,7 @@ router.get("/bookshelf", async (req, res) => {
 // TODO: CREATE ROUTE FOR /findbooks
 router.get("/findbooks", async (req, res) => {
   res.render("findbooks", {
-    logged_in: req.session.logged_in
+    logged_in: req.session.logged_in,
   });
 });
 
