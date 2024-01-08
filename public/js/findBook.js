@@ -88,12 +88,12 @@ async function appendResults(queryURL) {
         addButton.title = resultArray[i].title;
         addButton.cek = resultArray[i].cover_edition_key;
         addButton.ratingAvg = resultArray[i].ratings_average;
-        addButton.fs = resultArray[i].first_sentence;
+        addButton.first_s = resultArray[i].first_sentence;
         addButton.year = resultArray[i].first_publish_year;
         addButton.a_name = resultArray[i].author_name;
         addButton.a_key = resultArray[i].author_key;
         addButton.addEventListener('click', function(e) {
-            postBook(e.target.cek, e.target.title, e.target.ratingAvg, e.target.fs, e.target.year, e.target.a_name, e.target.a_key);
+            postBook(e.target.cek, e.target.title, e.target.ratingAvg, e.target.first_s, e.target.year, e.target.a_name, e.target.a_key);
         });
         searchCard.appendChild(addButton);
 
@@ -106,16 +106,45 @@ async function appendResults(queryURL) {
   }
 }
 
-function postBook(cek, title, rating, fs, year, a_name, a_key) {
+function postBook(cek, title, rating, first_s, year, a_name, a_key) {
     //log just checks the info. TODO: change this to a POST request
+    
     console.log(`Posting a new book with info:
                     cover_edition_key: ${cek}
                     title: ${title},
                     ratings_average: ${rating},
-                    first_sentence: ${fs},
+                    first_sentence: ${first_s},
                     first_publish_year: ${year},
                     author_name: ${a_name},
                     author_key: ${a_key}`);
+    
+   const requestOptions = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      cover_edition_key: cek,
+      title: title,
+      ratings_average: rating,
+      first_sentence: '',
+      first_publish_year: year,
+      author_name: a_name,
+      author_key: a_key,
+    }),
+   };
+
+   fetch("/api/books", requestOptions)
+    .then((response) => {
+      if (response.ok) {
+        console.log("Book saved successfully!");
+      } else {
+        console.error("Failed to save book: ", response.statusText);
+      }
+    })
+    .catch((error) => {
+      console.error("Error saving book: ", error.message);
+    });
 }
 
 
