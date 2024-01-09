@@ -12,7 +12,7 @@
 
 ## Description
 
-A place for book lovers to create and save book collections
+Welcome to Bookshelf– the ultimate platform for book enthusiasts to come together and showcase their literary journeys! Our website offers a seamless and user-friendly experience for individuals passionate about building and managing their book collections.
 
 ## Installation
 
