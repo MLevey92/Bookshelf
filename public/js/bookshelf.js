@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const createBookDiv = (book) => {
     const bookDiv = document.createElement('div');
-    bookDiv.classList.add('book-card', 'box'); // box class is used in Bulma
+    bookDiv.classList.add('book-card', 'mb-8', 'w-48', 'mx-auto', 'sm:w-64', 'md:w-1/3', 'lg:w-1/4', 'xl:w-1/4'); // box class is used in Bulma
     bookDiv.dataset.title = book.title;
     bookDiv.dataset.author = book.author;
     bookDiv.dataset.coverEditionKey = book.coverEditionKey;
