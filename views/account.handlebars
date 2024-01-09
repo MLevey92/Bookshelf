@@ -1,0 +1,21 @@
+{{log user}}
+
+<h2>Manage {{user.username}}'s Account</h2>
+
+<h3>Member ID: {{user.id}}</h3>
+<h3>Member Since: {{format_time user.createdAt}}</h3>
+<h3>Email Registered: {{user.email}}</h3>
+
+<!-- Form for changing password -->
+<h3 class="underline">Change Password</h3>
+<form id="changePasswordForm">
+  <label for="currentPassword">Current Password:</label>
+  <input type="password" id="currentPassword" name="currentPassword" required />
+
+  <label for="newPassword">New Password:</label>
+  <input type="password" id="newPassword" name="newPassword" required />
+
+  <button type="submit">Change Password</button>
+</form>
+
+<script src="/js/accountFunctions/changePassword.js"></script>

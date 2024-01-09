@@ -1,37 +1,37 @@
 const formEl = document.getElementById("searchForm");
 const resultsEl = document.getElementById("results");
 const inputEl = document.getElementById("input");
-const searchResults = document.querySelector('#results');
-
+const searchResults = document.querySelector("#results");
 
 function formHandler(event) {
-    event.preventDefault();
+  event.preventDefault();
 
-    searchResults.innerHTML='';
+  searchResults.innerHTML = "";
 
-    const searchBy = getRadioValue();
-    const queryURL = `https://openlibrary.org/search.json?${searchBy}=${spacesToPlusesAndTrim(inputEl.value)}&subject=book&fields=title,cover_edition_key,author_name,author_key,first_sentence,first_publish_year,ratings_average`;
-    
-    appendResults(queryURL);
+  const searchBy = getRadioValue();
+  const queryURL = `https://openlibrary.org/search.json?${searchBy}=${spacesToPlusesAndTrim(
+    inputEl.value
+  )}&subject=book&fields=title,cover_edition_key,author_name,author_key,first_sentence,first_publish_year,ratings_average`;
+
+  appendResults(queryURL);
 }
 
 //simply gets the data and returns it
 async function fetchData(url) {
-    try {
-        const response = await fetch(url);
+  try {
+    const response = await fetch(url);
 
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`)
-        }
-        
-        let data = await response.json();
-        data = data.docs;
-
-        return data;
-    } catch (error) {
-        console.error("Error during fetch:", error.message);
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
     }
 
+    let data = await response.json();
+    data = data.docs;
+
+    return data;
+  } catch (error) {
+    console.error("Error during fetch:", error.message);
+  }
 }
 
 //Calls fetch data, formats result, and creates search result section
@@ -56,50 +56,58 @@ async function appendResults(queryURL) {
     }));
 
     //create and append to searchResults
-    for (let i=0;i<resultArray.length;i++) {
-        var searchCard = document.createElement('div');
-        searchCard.classList.add("seed-card");
+    for (let i = 0; i < resultArray.length; i++) {
+      var searchCard = document.createElement("div");
+      searchCard.classList.add("seed-card");
 
-        var titleEl = document.createElement('h4');
-        titleEl.textContent = resultArray[i].title;
-        searchCard.appendChild(titleEl);
+      var titleEl = document.createElement("h4");
+      titleEl.textContent = resultArray[i].title;
+      searchCard.appendChild(titleEl);
 
-        var imgEl = document.createElement('img');
-        imgEl.src = src=`https:covers.openlibrary.org/b/olid/${resultArray[i].cover_edition_key}-M.jpg`
-        searchCard.appendChild(imgEl);
+      var imgEl = document.createElement("img");
+      imgEl.src =
+        src = `https:covers.openlibrary.org/b/olid/${resultArray[i].cover_edition_key}-M.jpg`;
+      searchCard.appendChild(imgEl);
 
-        var yearEl = document.createElement('p');
-        yearEl.textContent = `Year: ${resultArray[i].first_publish_year}`;
-        searchCard.appendChild(yearEl);
+      var yearEl = document.createElement("p");
+      yearEl.textContent = `Year: ${resultArray[i].first_publish_year}`;
+      searchCard.appendChild(yearEl);
 
-        var ratingEl = document.createElement('p');
-        ratingEl.textContent = `Rating: ${resultArray[i].ratings_average}`;
-        searchCard.appendChild(ratingEl);
+      var ratingEl = document.createElement("p");
+      ratingEl.textContent = `Rating: ${resultArray[i].ratings_average}`;
+      searchCard.appendChild(ratingEl);
 
-        var authorEl = document.createElement('p');
-        authorEl.textContent = `Author: ${resultArray[i].author_name}`;
-        searchCard.appendChild(authorEl);
-        
-        //this button will call postBook with book info corresponding to the pressed button
-        var addButton = document.createElement('button');
-        addButton.textContent = "Add to Shelf";
-        
-        //These add properties to each button corresponding to it's book info
-        addButton.title = resultArray[i].title;
-        addButton.cek = resultArray[i].cover_edition_key;
-        addButton.ratingAvg = resultArray[i].ratings_average;
-        addButton.first_s = resultArray[i].first_sentence;
-        addButton.year = resultArray[i].first_publish_year;
-        addButton.a_name = resultArray[i].author_name;
-        addButton.a_key = resultArray[i].author_key;
-        addButton.addEventListener('click', function(e) {
-            postBook(e.target.cek, e.target.title, e.target.ratingAvg, e.target.first_s, e.target.year, e.target.a_name, e.target.a_key);
-        });
-        searchCard.appendChild(addButton);
+      var authorEl = document.createElement("p");
+      authorEl.textContent = `Author: ${resultArray[i].author_name}`;
+      searchCard.appendChild(authorEl);
 
-        searchResults.appendChild(searchCard);
+      //this button will call postBook with book info corresponding to the pressed button
+      var addButton = document.createElement("button");
+      addButton.textContent = "Add to Shelf";
+
+      //These add properties to each button corresponding to it's book info
+      addButton.title = resultArray[i].title;
+      addButton.cek = resultArray[i].cover_edition_key;
+      addButton.ratingAvg = resultArray[i].ratings_average;
+      addButton.first_s = resultArray[i].first_sentence;
+      addButton.year = resultArray[i].first_publish_year;
+      addButton.a_name = resultArray[i].author_name;
+      addButton.a_key = resultArray[i].author_key;
+      addButton.addEventListener("click", function (e) {
+        postBook(
+          e.target.cek,
+          e.target.title,
+          e.target.ratingAvg,
+          e.target.first_s,
+          e.target.year,
+          e.target.a_name,
+          e.target.a_key
+        );
+      });
+      searchCard.appendChild(addButton);
+
+      searchResults.appendChild(searchCard);
     }
-
   } catch (error) {
     console.error("Error getting books", error.message);
     return []; // Return an empty array in case of an error
@@ -107,9 +115,9 @@ async function appendResults(queryURL) {
 }
 
 function postBook(cek, title, rating, first_s, year, a_name, a_key) {
-    //log just checks the info. TODO: change this to a POST request
-    
-    console.log(`Posting a new book with info:
+  //log just checks the info. TODO: change this to a POST request
+
+  console.log(`Posting a new book with info:
                     cover_edition_key: ${cek}
                     title: ${title},
                     ratings_average: ${rating},
@@ -117,8 +125,8 @@ function postBook(cek, title, rating, first_s, year, a_name, a_key) {
                     first_publish_year: ${year},
                     author_name: ${a_name},
                     author_key: ${a_key}`);
-    
-   const requestOptions = {
+
+  const requestOptions = {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -127,14 +135,14 @@ function postBook(cek, title, rating, first_s, year, a_name, a_key) {
       cover_edition_key: cek,
       title: title,
       ratings_average: rating,
-      first_sentence: '',
+      first_sentence: "",
       first_publish_year: year,
       author_name: a_name,
       author_key: a_key,
     }),
-   };
+  };
 
-   fetch("/api/books", requestOptions)
+  fetch("/api/books", requestOptions)
     .then((response) => {
       if (response.ok) {
         console.log("Book saved successfully!");
@@ -147,18 +155,16 @@ function postBook(cek, title, rating, first_s, year, a_name, a_key) {
     });
 }
 
-
 //Get value of checked radio button, used in query
 function getRadioValue() {
-    const radios = document.getElementsByName("searchBy");
+  const radios = document.getElementsByName("searchBy");
 
-    for (i=0;i<radios.length;i++) {
-        if (radios[i].checked) {
-            return radios[i].value;
-        }
+  for (i = 0; i < radios.length; i++) {
+    if (radios[i].checked) {
+      return radios[i].value;
     }
+  }
 }
-
 
 //helper functions
 function spacesToPlusesAndTrim(inputString) {
@@ -175,4 +181,4 @@ function roundToTenths(number) {
 }
 
 //form submit handler
-formEl.addEventListener("submit", formHandler)
+formEl.addEventListener("submit", formHandler);

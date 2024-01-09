@@ -22,6 +22,9 @@
               <a id="loginButton" href="/login">Login</a>
             {{/if}}
           </li>
+          {{#if logged_in}}
+            <li><a href="/account">My Account</a></li>
+          {{/if}}
         </ul>
       </nav>
 
