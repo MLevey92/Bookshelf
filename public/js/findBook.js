@@ -83,6 +83,7 @@ async function appendResults(queryURL) {
         //this button will call postBook with book info corresponding to the pressed button
         var addButton = document.createElement('button');
         addButton.textContent = "Add to Shelf";
+        addButton.classList.add("text-white", "bg-blue-700");
         
         //These add properties to each button corresponding to it's book info
         addButton.title = resultArray[i].title;
