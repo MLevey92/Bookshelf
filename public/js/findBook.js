@@ -58,7 +58,7 @@ async function appendResults(queryURL) {
     //create and append to searchResults
     for (let i = 0; i < resultArray.length; i++) {
       var searchCard = document.createElement("div");
-      searchCard.classList.add("seed-card");
+      searchCard.classList.add("search-card");
 
       var titleEl = document.createElement("h4");
       titleEl.textContent = resultArray[i].title;
