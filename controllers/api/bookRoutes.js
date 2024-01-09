@@ -92,4 +92,31 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
+// Your server-side route to handle the PUT request
+router.put("/:id", async (req, res) => {
+  try {
+    const bookId = req.params.id;
+    const { shelfId } = req.body;
+
+    // Use Sequelize to find the book by ID
+    const bookToUpdate = await Book.findByPk(bookId);
+
+    // Check if the book exists
+    if (!bookToUpdate) {
+      return res.status(404).json({ message: "Book not found" });
+    }
+
+    // Update the book with the selected shelf ID
+    bookToUpdate.shelf_id = shelfId;
+    await bookToUpdate.save();
+
+    // Send a success response
+    res.status(200).json({ message: "Book added to shelf successfully" });
+  } catch (error) {
+    // Handle any errors that occur during the update process
+    console.error(error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+});
+
 module.exports = router;
