@@ -685,6 +685,14 @@ body {
   /* Add padding to the book card */
 }
 
+/* for the cards in book search */
+
+.search-card {
+  padding: 20px;
+  margin: 5px;
+  border: 1px solid lightgray;
+}
+
 /* Increase padding for header */
 
 header {
