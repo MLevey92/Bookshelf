@@ -1,5 +1,3 @@
-{{! This page and its functionality is for logged in users only}}
-
 {{#if logged_in}}
   {{log user}}
   {{log books}}
@@ -8,7 +6,8 @@
   <h1>{{user.username}}'s Library</h1>
 
   <h2>Your Bookshelves</h2>
-  {{! ! Form to create new shelf }}
+  {{! Form to create a new shelf }}
+  <h3>Create a New Shelf</h3>
   <form id="add-shelf-form">
     <label for="shelf-name">Shelf Name:</label>
     <input type="text" id="shelf-name" name="name" required />
@@ -16,10 +15,21 @@
   </form>
   {{#each shelves}}
     <div class="my-shelves">
-      <p>{{this.name}}</p>
-      <button class="delete-shelf-button" data-shelf-id="{{this.id}}">Delete
-        Shelf</button>
+      <h4>{{this.name}}</h4>
+      <button class="delete-shelf-button" data-shelf-id="{{this.id}}">Delete Shelf</button>
+      <button class="edit-shelf-button" data-shelf-id="{{this.id}}">Edit Shelf</button>
+      {{#each this.Books}}
+        <div class="saved-books">
+          <h3>{{title}}</h3>
+          <img src="https://covers.openlibrary.org/b/olid/{{cover_edition_key}}-M.jpg" />
+          <p>{{first_sentence}}</p>
+          <p>First published in {{first_publish_year}}</p>
+          <p>Average Rating: {{ratings_average}}</p>
+          <p>Author: {{author_name}}</p>
+          <button class="remove-from-shelf-button" data-book-id="{{id}}">Remove from Shelf</button>
 
+        </div>
+      {{/each}}
     </div>
   {{/each}}
 
@@ -27,21 +37,28 @@
   {{#each books}}
     <div class="saved-books">
       <h3>{{this.title}}</h3>
-      <img
-        src="https:covers.openlibrary.org/b/olid/{{this.cover_edition_key}}-M.jpg"
-      />
+      <img src="https:covers.openlibrary.org/b/olid/{{this.cover_edition_key}}-M.jpg" />
       <p>{{this.first_sentence}}</p>
       <p>First published in {{this.first_publish_year}}</p>
       <p>Average Rating: {{this.ratings_average}}</p>
       <p>Author: {{this.author_name}}</p>
-      {{! ! Button to delete a Book }}
-      <button
-        class="delete-book-button"
-        data-book-id="{{this.id}}"
-      >Delete</button>
+      <button class="show-add-to-shelf-form-button" data-book-id="{{this.id}}">Add to Shelf</button>
+
+      <!-- Form to add a book to a shelf (initially hidden) -->
+      <form class="add-to-shelf-form hidden" data-book-id="{{this.id}}">
+        <label for="shelf-selector-{{this.id}}">Select Shelf:</label>
+        <select id="shelf-selector-{{this.id}}" name="shelfId" required>
+          {{#each ../shelves}}
+            <option value="{{this.id}}">{{this.name}}</option>
+          {{/each}}
+        </select>
+        <button type="submit">Add to Shelf</button>
+      </form>
+
+      <!-- Button to delete a Book -->
+      <button class="delete-book-button" data-book-id="{{this.id}}">Delete</button>
     </div>
   {{/each}}
-
 {{else}}
   <p class="login-prompt">You must log in to view your bookshelf.
     <a href="/login">Login</a></p>
@@ -49,4 +66,7 @@
 
 <script src="/js/bookshelfFunctions/deleteShelf.js"></script>
 <script src="/js/bookshelfFunctions/addShelf.js"></script>
+<script src="/js/bookshelfFunctions/editShelf.js"></script>
 <script src="/js/bookshelfFunctions/deleteBook.js"></script>
+<script src="/js/bookshelfFunctions/addToShelf.js"></script>
+<script src="/js/bookshelfFunctions/removeFromShelf.js"></script>
