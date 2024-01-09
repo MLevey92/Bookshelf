@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const detailsContainer = document.createElement('div');
     detailsContainer.classList.add('book-details-container');
 
-    if (loggedIn) {
+    if (logged_In) {
       // pull the same component/card layout as book.handlebars
       fetch('./views/book.handlebars')
         .then(response => response.text())

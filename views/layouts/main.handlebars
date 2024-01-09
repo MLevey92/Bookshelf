@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
     <link rel="stylesheet" href="/css/tw.css" />
     <title>Bookshelf</title>
   </head>
@@ -14,7 +15,7 @@
         <ul>
           {{! TODO: Will change the name of hrefs once homeRoutes defined }}
           <li><a href="/bookshelf">My Bookshelf</a></li>
-          <li><a href="/findbooks">Find Books</a></li>
+          <li><a href="/findbooks">Search Library</a></li>
           <li>
             {{#if logged_in}}
               <a id="logoutButton" href="/login">Logout</a>
@@ -37,26 +38,9 @@
       {{{body}}}
     </main>
 
-    <!-- If they're logged in, show nothing. Otherwise show the login-form -->
-    {{!-- {{#if logged_in}}
-    <br />
-    {{else}}
-    <form class="login-form">
-        <label for="username">Username:</label>
-        <input type="text" id="usernameInput" name="username" required />
-
-        <label for="password">Password:</label>
-        <input type="password" id="passwordInput" name="password" required />
-
-        <br />
-
-        <button type="submit">Login</button>
-    </form>
-    {{/if}} --}}
-
     <!-- Footer -->
     <footer>
-      <p>&copy; {{currentYear}} Your Website Name. All rights reserved.</p>
+      <p>&copy; {{currentYear}} Bookshelf App by Jonathan Acciarito, Michael Levey, Jessica Scheck, Colin Rent, and Blaze Harmon. All rights reserved.</p>
       <!-- Add more footer content as needed -->
     </footer>
 
