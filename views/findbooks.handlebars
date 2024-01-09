@@ -6,9 +6,11 @@
         <label for="title">Title</label><br>
         <input type="radio" id="author" name="searchBy" value="author">
         <label for="title">Author</label><br>
-        <input type="text" id="input">
+        <div class="grid mb-6 gap-6 sm:grid-cols-1 md:grid-cols-2">
+            <input type="text" id="input" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:border-blue-500 block w-full p-2.5">
 
-        <input type="submit" id="submit" value="Search">
+            <input type="submit" id="submit" value="Search" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 w-1/3">
+        </div>
     </form>
 
     <div id="results"></div>
