@@ -36,7 +36,7 @@ const registerUser = async (event) => {
 
     if (response.ok) {
       // If registration is successful, redirect the user or perform other actions
-      document.location.replace("/dashboard");
+      document.location.replace("/");
     } else {
       // Handle registration failure
       const result = await response.json();

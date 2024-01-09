@@ -88,4 +88,24 @@ router.get("/findbooks", async (req, res) => {
   });
 });
 
+router.get("/account", async (req, res) => {
+  try {
+    // Fetch only the necessary user details (excluding the password)
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ["password"] },
+    });
+
+    const user = userData.get({ plain: true });
+
+    // Render the "account" page with user information
+    res.render("account", {
+      user,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    console.error("Error fetching account data:", err);
+    res.status(500).send(`Internal Server Error: ${err.message}`);
+  }
+});
+
 module.exports = router;
