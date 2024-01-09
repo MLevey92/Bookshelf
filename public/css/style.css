@@ -1,97 +1,105 @@
-/* This assumes you have Tailwind CSS properly set up in your project */
+/* need to add tailwind directives per documentation */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
 
-/* Background colors */
-.bg-primary {
-    background-color: #3d5852;
+:root {
+    --primary: #3d5852;
+    --secondary: #86938f;
+    --tertiary: #5e877f;
+    --quatrinary: #6c6b67;
+    --light: #e3e4e3;
+    --dark: #182c23;
+    --error: rgb(228, 46, 1);
+    --border-radius: 0.3rem;
+    --background: #ceb9a9;
+    --text: #803e00;
 }
 
-.bg-secondary {
-    background-color: #86938f;
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
 }
 
-.bg-tertiary {
-    background-color: #5e877f;
-}
-
-.bg-quatrinary {
-    background-color: #6c6b67;
-}
-
-.bg-light {
-    background-color: #e3e4e3;
-}
-
-.bg-dark {
-    background-color: #182c23;
-}
-
-.bg-error {
-    background-color: rgb(228, 46, 1);
-}
-
-/* Border radius */
-.rounded {
-    border-radius: 0.3rem;
-}
-
-/* Text and background colors */
-.text-background {
-    color: #ceb9a9;
-}
-
-.text-primary {
-    color: #3d5852;
-}
-
-/* Bookshelf container */
-.bookshelf-container {
-    @apply flex flex-wrap;
-}
-
-/* Book card */
-.book-card {
-    @apply w-48 h-72 m-4;
-}
-
-/* Book cover image */
-.book-cover {
-    @apply w-full h-full object-cover rounded-lg;
-}
-
-/* Seed card */
-.seed-card {
-    @apply border-solid border border-black;
-}
-
-/* Header, footer, navbar, and links */
+/* Header, Footer, Navbar, and Links */
 header {
-    @apply flex justify-between items-center bg-background p-4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--background);
+    padding: 10px;
 }
 
 footer {
-    @apply bg-background p-4;
+    background-color: var(--background);
+    padding: 10px;
+    text-align: center;
 }
 
 .main-title {
-    @apply ml-5;
+    margin-left: 20px;
 }
 
 ul {
-    @apply list-none pt-4;
+    list-style-type: none;
+    padding-top: 1em;
 }
 
 li {
-    @apply inline p-4;
+    display: inline;
+    padding: 10px;
 }
 
 a {
-    @apply text-text no-underline;
+    color: var(--text);
+    text-decoration: none;
 }
 
 a:hover {
-    @apply no-underline;
+    text-decoration: none;
+    background-color: var(--background);
+}
+
+/* Bookshelf Container and Book Cards */
+.bookshelf-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+
+.book-card {
+    width: 180px;
+    height: 290px;
+    margin: 10px;
+    background-color: var(--light);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.book-card:hover {
+    transform: scale(1.05);
+}
+
+.book-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+}
+
+/* Book Details Container */
+.book-details-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
