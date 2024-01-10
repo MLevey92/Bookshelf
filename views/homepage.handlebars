@@ -1,13 +1,9 @@
 <body>
   <!-- Main Section -->
   <main>
-    <section id="featured-books">
-      <h2>Featured Books</h2>
-      <!-- Include book cards or other featured content here -->
-    </section>
 
     <section id="gallery">
-      <h2>Featured Gallery</h2>
+      <h2 class="p-8"><strong>Top-Rated Books in Our Library</strong></h2>
       <div class="gallery-container">
         {{#each galleryItems}}
           <div class="gallery-item">
@@ -23,7 +19,14 @@
         {{/each}}
       </div>
     </section>
+
+    <section id="featured-books">
+      <!-- Include book cards or other featured content here -->
+    </section>
+
   </main>
+
+
 
   <script src="/js/homepageFunctions/seedHomepage.js"></script>
   {{#if logged_in}}

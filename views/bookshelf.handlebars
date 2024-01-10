@@ -3,14 +3,14 @@
 {{log books}}
 {{log shelves}}
 
-<div class="grid grid-cols-1 gap-4 flex flex-col items-center p-4">
+<div class="grid grid-cols-1 gap-4 flex flex-col items-center pt-8">
   <div class="flex flex-col items-center"> <!-- New container for h2 and form -->
     <h2 class="text-4xl mb-4">{{user.username}}'s Library</h2>
     {{! Form to create a new shelf }}
     <form id="add-shelf-form" class="mb-4 flex">
       <label for="shelf-name" class="mr-1">Create a New Shelf:</label>
       <input type="text" id="shelf-name" name="name" required class="border border-gray-300 rounded p-2 flex-grow" />
-      <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 hover:text-gray-100">Add
+      <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 hover:text-gray-100">Create
         Shelf</button>
     </form>
   </div>
@@ -34,9 +34,9 @@
         <img src="https:covers.openlibrary.org/b/olid/{{this.cover_edition_key}}-M.jpg" class="mb-2" />
         <h3 class="text-xl mb-2"><strong>{{this.title}}</strong></h3>
         <p>{{this.first_sentence}}</p>
-        <p><em>(First published in {{first_publish_year}})</em></p>
-        <p><strong>Avg. Rating: </strong>{{ratings_average}} out of 5</p>
-        <p><strong>Author: </strong> {{author_name}}</p>
+        <p><em>(First published in {{this.first_publish_year}})</em></p>
+        <p><strong>Avg. Rating: </strong>{{this.ratings_average}} out of 5</p>
+        <p><strong>Author: </strong> {{this.author_name}}</p>
         <button
           class="remove-from-shelf-button bg-red-500 text-white py-2 px-4 rounded hover:bg-red-700 hover:text-gray-100"
           data-book-id="{{id}}">Remove from Shelf</button>
@@ -57,7 +57,7 @@
     <p><em>(First published in {{this.first_publish_year}})</em></p>
     <p><strong>Avg. Rating: </strong>{{this.ratings_average}} out of 5</p>
     <p><strong>Author: </strong> {{this.author_name}}</p>
-    <button class="show-add-to-shelf-form-button bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 hover:text-gray-100"
+    <button class="show-add-to-shelf-form-button bg-green-800 text-white py-2 px-4 rounded hover:bg-green-900 hover:text-gray-100"
       data-book-id="{{this.id}}">Add to New Shelf</button>
 
     <!-- Form to add a book to a shelf (initially hidden) -->
@@ -68,11 +68,11 @@
         <option value="{{this.id}}">{{this.name}}</option>
         {{/each}}
       </select>
-      <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 hover:text-gray-100">Add to Shelf</button>
+      <button type="submit" class="bg-yellow-500 text-white py-2 px-4 rounded hover:bg-yellow-700 hover:text-gray-100">Add to Shelf</button>
     </form>
 
     <!-- Button to delete a Book -->
-    <button class="delete-book-button bg-red-500 text-white py-2 px-4 rounded mt-2 hover:bg-red-700 hover:text-gray-100"
+    <button class="delete-book-button bg-gray-500 text-white py-2 px-4 rounded mt-2 hover:bg-gray-700 hover:text-gray-100"
       data-book-id="{{this.id}}">Delete</button>
   </div>
   {{/each}}
