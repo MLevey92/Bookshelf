@@ -1,27 +1,63 @@
+<!DOCTYPE html>
 <html lang="en">
 
-  <head>
+<head class="nav-bar bg-yellow-500">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
     <link rel="stylesheet" href="/css/tw.css" />
-    <title>Bookshelf</title>
-  </head>
 
-  <body>
-    <header>
-      <h1 class="main-title font-bold sm:text-2xl md:text-4xl"><a href="/">Bookshelf</a></h1>
-      <nav>
-        <ul id="navList">
-          {{! TODO: Will change the name of hrefs once homeRoutes defined }}
-          <li><a href="/bookshelf">My Bookshelf</a></li>
-          <li><a href="/findbooks">Search Library</a></li>
-          <li>
+    <title>
+        <stronger>Bookshelf</stronger>
+    </title>
+</head>
+
+<body class="bg-gray-100">
+
+    <!-- responsive nav menu -->
+    <header class="bg-amber-900 p-2 fixed top-0 left-0 w-full z-50">
+        <div class="flex items-center justify-between">
+            <h1 class="main-title text-white text-4xl font-bold"><a href="/">Bookshelf</a></h1>
+            <button id="menuToggle" class="lg:hidden text-white ml-6 focus:outline-none">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7">
+                    </path>
+                </svg>
+            </button>
+            <nav class="hidden lg:flex items-center justify-center space-x-6 flex-grow" id="nav-list">
+                <a href="/bookshelf" class="text-white ml-12 text-2xl">My Bookshelf</a>
+                <a href="/findbooks" class="text-white text-2xl">Search Library</a>
+                {{#if logged_in}}
+                <a id="logoutButton" href="/login" class="text-white text-2xl">Logout</a>
+                <a href="/account" class="text-white text-2xl">My Account</a>
+                {{else}}
+                <a id="loginButton" href="/login" class="text-white">Login</a>
+                {{/if}}
+            </nav>
+        </div>
+
+        <!-- view for logged in users -->
+        {{#if logged_in}}
+        <h3 class="text-white mr-12">Welcome!</h3>
+        {{/if}}
+    </header>
+
+    <!-- responsive nav for mobile view -->
+    <nav class="lg:hidden hidden" id="mobile-menu" style="background-color: #78350F;">
+        <div class="flex flex-col items-center mt-8">
+            <a href="/bookshelf" class="text-white my-2">My Bookshelf</a>
+            <a href="/findbooks" class="text-white my-2">Search Library</a>
             {{#if logged_in}}
-              <a id="logoutButton" href="/login">Logout</a>
+            <a id="logoutButton" href="/login" class="text-white my-2">Logout</a>
+            <a href="/account" class="text-white my-2">My Account</a>
             {{else}}
-              <a id="loginButton" href="/login">Login</a>
+            <a id="loginButton" href="/login" class="text-white my-2">Login</a>
             {{/if}}
+
+        </div>
+    </nav>
+
           </li>
           {{#if logged_in}}
             <li><a href="/account">My Account</a></li>
@@ -32,24 +68,30 @@
 
     </header>
 
-    <main>
-      {{{body}}}
+    <main class="p-4">
+        {{{body}}}
     </main>
 
-    <!-- Footer -->
-    <footer>
-      <p>&copy; {{currentYear}} Bookshelf App by Jonathan Acciarito, Michael Levey, Jessica Scheck, Colin Rent, and Blaze Harmon. All rights reserved.</p>
-      <!-- Add more footer content as needed -->
+    <!-- footer area -->
+    <footer class="bg-amber-900 p-4 text-white text-center">
+        <p>&copy; January 2024. Bookshelf App by Jonathan Acciarito, Michael Levey, Jessica Scheck, Colin Rent, and
+            Blaze Harmon. All rights reserved.</p>
     </footer>
 
     <script src="/js/helpfulFunctions.js"></script>
 
     {{#if logged_in}}
-      <script src="/js/logoutHandle.js"></script>
+    <script src="/js/logoutHandle.js"></script>
     {{else}}
-      <script src="/js/loginHandle.js"></script>
+    <script src="/js/loginHandle.js"></script>
     {{/if}}
 
-  </body>
+    <!-- logic for toggling mobile dropdown menu -->
+    <script>
+        document.getElementById('menuToggle').addEventListener('click', function () {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+    </script>
+</body>
 
 </html>

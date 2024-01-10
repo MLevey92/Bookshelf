@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* created root items for future styling consistency*/
+/* created root items for future styling consistency */
 :root {
     --primary: #3d5852;
     --secondary: #86938f;
@@ -18,10 +18,8 @@
 }
 
 body {
-    margin: 20px;
-    /* Add some margin to the body */
-    padding: 20px;
-    /* Add padding to the body */
+    margin: 4px;
+    padding: 4px;
 }
 
 #navList {
@@ -33,23 +31,21 @@ body {
 .bookshelf-container {
     display: flex;
     flex-wrap: wrap;
-    padding: 20px;
-    /* Add padding to the bookshelf container */
+    padding: 4px;
 }
 
 /* Increase padding for book-card */
 .book-card {
     width: 180px;
     height: 290px;
-    margin: 10px;
-    padding: 15px;
-    /* Add padding to the book card */
+    margin: 2px;
+    padding: 4px;
 }
 
 /* for the cards in book search */
 .search-card {
-    padding: 20px;
-    margin: 5px;
+    padding: 4px;
+    margin: 2px;
     border: 1px solid lightgray;
 }
 
@@ -66,55 +62,121 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-weight: bolder;
     background-color: var(--background);
-    padding: 20px;
-    /* Add padding to the header */
+    padding: 30px;
+    /* Increase the padding to make the header taller */
 }
 
-/* Increase padding for footer */
+.nav-menu {
+    display: none;
+    /* Hide the menu by default */
+}
+
+#nav-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 footer {
+    bottom: 0;
     background-color: var(--background);
-    padding: 20px;
-    /* Add padding to the footer */
+    padding: 1rem;
 }
 
-/* Increase padding for main-title */
 .main-title {
-    margin-left: 20px;
-    padding: 10px;
-    /* Add padding to the main title */
+    margin-left: 4px;
+    padding: 2px;
 }
 
-/* Increase padding for ul and li */
 ul {
     list-style-type: none;
     padding-top: 1em;
     padding-left: 0;
-    /* Remove default left padding for ul */
+    align-items: center;
+    justify-content: center;
 }
 
 li {
     display: inline;
-    padding: 10px;
+    padding: 2px;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Increase padding for a:hover */
 a:hover {
     text-decoration: none;
     background-color: #ddd;
-    padding: 5px;
-    /* Add padding to the anchor on hover */
+    padding: 2px;
 }
 
-/*login/register forms */
 .login-form {
-    padding: 20px;
-    margin: 5px;
+    padding: 4px;
+    margin: 2px;
     border: 1px solid lightgray;
 }
 
 #register-form {
-    padding: 20px;
-    margin: 5px;
+    padding: 4px;
+    margin: 2px;
     border: 1px solid lightgray;
+}
+
+/* responsive @media items */
+@media (min-width: 640px) {
+
+    /* adjust for screens 640px and larger */
+    body {
+        margin: 8px;
+        padding: 8px;
+    }
+
+    .book-card {
+        margin: 4px;
+        padding: 8px;
+    }
+}
+
+/* mobile responsive */
+@media (max-width: 640px) {
+    body {
+        margin: 2px;
+        padding: 2px;
+    }
+
+    .book-card {
+        margin: 2px;
+        padding: 4px;
+    }
+
+    header {
+        padding: 2px;
+    }
+
+    footer {
+        padding: 2px;
+    }
+
+    .main-title {
+        margin-left: 2px;
+        padding: 2px;
+    }
+
+    ul {
+        padding-top: 0.5em;
+    }
+
+    li {
+        padding: 1px;
+    }
+
+    a:hover {
+        padding: 1px;
+    }
+
+    .login-form,
+    #register-form {
+        padding: 2px;
+        margin: 1px;
+    }
 }
