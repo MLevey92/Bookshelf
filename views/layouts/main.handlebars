@@ -10,9 +10,9 @@
 
   <body>
     <header>
-      <h1 class="main-title"><a href="/">Bookshelf</a></h1>
+      <h1 class="main-title font-bold sm:text-2xl md:text-4xl"><a href="/">Bookshelf</a></h1>
       <nav>
-        <ul>
+        <ul id="navList">
           {{! TODO: Will change the name of hrefs once homeRoutes defined }}
           <li><a href="/bookshelf">My Bookshelf</a></li>
           <li><a href="/findbooks">Search Library</a></li>
@@ -29,9 +29,7 @@
         </ul>
       </nav>
 
-      {{#if logged_in}}
-        <h3>Logged In!!!</h3>
-      {{/if}}
+
     </header>
 
     <main>
