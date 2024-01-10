@@ -1,5 +1,4 @@
 
-// --------------------------------------------------------------------------------------
 
 const apiUrl =
   "https://openlibrary.org/search.json?q=&subject=book&fields=title,cover_edition_key,author_name,author_key,first_sentence,first_publish_year,ratings_average&limit=20&sort=rating desc";

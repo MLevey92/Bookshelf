@@ -11,7 +11,7 @@ function formHandler(event) {
   const searchBy = getRadioValue();
   const queryURL = `https://openlibrary.org/search.json?${searchBy}=${spacesToPlusesAndTrim(
     inputEl.value
-  )}&subject=book&fields=title,cover_edition_key,author_name,author_key,first_sentence,first_publish_year,ratings_average`;
+  )}&subject=book&fields=title,cover_edition_key,author_name,author_key,first_sentence,first_publish_year,ratings_average&limit=10`;
 
   appendResults(queryURL);
 }

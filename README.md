@@ -124,10 +124,10 @@ MIT
 
 ## Contributors
 
-- Jessica
-- Michael
-- Jonathan
-- Blaze
-- Colin
+- Jessica ~Github: Jessmica11 
+- Michael ~Email: mlevey92@gmail.com 
+- Jonathan ~Email: jonathanacciarito@gmail.com
+- Blaze ~Github: Concentratedcreatives
+- Colin ~Email: Crent0699@mail.com 
 
 ## Screenshots

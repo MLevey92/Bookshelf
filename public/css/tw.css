@@ -669,6 +669,8 @@ body {
   flex-wrap: wrap;
 }
 
+/* Increase padding for bookshelf-container */
+
 
 .bookshelf-container {
   display: flex;
@@ -693,11 +695,17 @@ body {
 }
 
 
+
+/*homepage and cards*/
+
+
 .seed-card {
   padding: 20px;
   margin: 5px;
   border: 1px solid lightgray;
 }
+
+/* Increase padding for header */
 
 header {
   display: flex;

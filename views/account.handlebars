@@ -1,19 +1,21 @@
 {{log user}}
 
-<h2>Manage {{user.username}}'s Account</h2>
+<div class="my-3">
+<h2 class="underline font-bold text-lg">Manage {{user.username}}'s Account</h2>
 
 <h3>Member ID: {{user.id}}</h3>
 <h3>Member Since: {{format_time user.createdAt}}</h3>
 <h3>Email Registered: {{user.email}}</h3>
+</div>
 
 <!-- Form for changing password -->
-<h3 class="underline">Change Password</h3>
-<form id="changePasswordForm">
+<h3 class="underline font-bold text-lg">Change Password</h3>
+<form class="my-4" id="changePasswordForm">
   <label for="currentPassword">Current Password:</label>
-  <input type="password" id="currentPassword" name="currentPassword" required />
-
+  <input class="border border-black" type="password" id="currentPassword" name="currentPassword" required />
+    <br>
   <label for="newPassword">New Password:</label>
-  <input type="password" id="newPassword" name="newPassword" required />
+  <input class="border border-black" type="password" id="newPassword" name="newPassword" required />
 
   <button type="submit" class="show-add-to-shelf-form-button bg-green-800 text-white py-2 px-4 rounded hover:bg-green-900 hover:text-gray-100">Change Password</button>
 </form>
@@ -21,6 +23,16 @@
 <!-- Button to delete the account -->
 <div class="alignCenter">
   <button class="delete-book-button bg-gray-500 text-white py-2 px-4 rounded mt-2 hover:bg-red-700 hover:text-gray-100" id="deleteAccountButton" data-user-id="{{user.id}}">Delete Account</button>
+  <div class="w-50 text-center my-2 py-2 bg-green-400 hover:bg-green-500 text-white rounded">
+    <button type="submit">Change Password</button>
+  </div>
+</form>
+
+<!-- Button to delete the account -->
+<div
+  class="w-50 text-center py-2 my-4 bg-red-500 text-white rounded hover:bg-red-600 hover:text-gray-100"
+>
+  <button id="deleteAccountButton" data-user-id="{{user.id}}">Delete Account</button>
 </div>
 
 <script src="/js/accountFunctions/changePassword.js"></script>

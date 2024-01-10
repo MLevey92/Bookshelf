@@ -17,8 +17,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const editFormHTML = `
           <form class="edit-shelf-form" data-shelf-id="${shelfId}">
             <label for="new-shelf-name">New Shelf Name:</label>
-            <input type="text" id="new-shelf-name" name="newShelfName" required>
-            <button type="submit">Save Changes</button>
+            <input class="border border-black" type="text" id="new-shelf-name" name="newShelfName" required>
+            <button type="submit" class="px-2 border border-black rounded">Save Changes</button>
           </form>
         `;
 
