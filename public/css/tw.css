@@ -666,6 +666,11 @@ body {
   /* Add padding to the body */
 }
 
+#navList {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 /* Increase padding for bookshelf-container */
 
 .bookshelf-container {
