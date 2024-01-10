@@ -93,3 +93,15 @@ a:hover {
     /* Add padding to the anchor on hover */
 }
 
+/*login/register forms */
+.login-form {
+    padding: 20px;
+    margin: 5px;
+    border: 1px solid lightgray;
+}
+
+#register-form {
+    padding: 20px;
+    margin: 5px;
+    border: 1px solid lightgray;
+}
