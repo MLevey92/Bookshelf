@@ -15,12 +15,12 @@
   <label for="newPassword">New Password:</label>
   <input type="password" id="newPassword" name="newPassword" required />
 
-  <button type="submit">Change Password</button>
+  <button type="submit" class="show-add-to-shelf-form-button bg-green-800 text-white py-2 px-4 rounded hover:bg-green-900 hover:text-gray-100">Change Password</button>
 </form>
 
 <!-- Button to delete the account -->
 <div class="alignCenter">
-  <button id="deleteAccountButton" data-user-id="{{user.id}}">Delete Account</button>
+  <button class="delete-book-button bg-gray-500 text-white py-2 px-4 rounded mt-2 hover:bg-red-700 hover:text-gray-100" id="deleteAccountButton" data-user-id="{{user.id}}">Delete Account</button>
 </div>
 
 <script src="/js/accountFunctions/changePassword.js"></script>
