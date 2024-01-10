@@ -122,12 +122,12 @@ PUT request will update a shelf's name with the request body:
 
 MIT
 
-## Contributors
+## Contributors/Contact Info
 
-- Jessica
-- Michael
-- Jonathan
-- Blaze
-- Colin
+- Jessica ~Github: Jessmica11 
+- Michael ~Email: mlevey92@gmail.com 
+- Jonathan ~Email: jonathanacciarito@gmail.com
+- Blaze ~Github: Concentratedcreatives
+- Colin ~Email: Crent0699@mail.com 
 
 ## Screenshots
