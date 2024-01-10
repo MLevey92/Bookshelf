@@ -35,7 +35,7 @@ async function processBooks() {
           <p><strong>Avg. Rating: </strong>${book.ratings_average} out of 5</p>
           <p><strong>Author: </strong> ${book.author_name}</p>
           <button class="show-add-to-shelf-form-button bg-green-800 text-white py-2 px-4 rounded hover:bg-green-900 hover:text-gray-100"
-            data-book-id="${book.id}">Add to New Shelf</button>
+            data-book-id="${book.id}">Add to Bookshelf</button>
         </div>`;
 
       cardFormats += cardFormat;
