@@ -10,7 +10,7 @@
     <form id="add-shelf-form" class="mb-4 flex">
       <label for="shelf-name" class="mr-1">Create a New Shelf:</label>
       <input type="text" id="shelf-name" name="name" required class="border border-gray-300 rounded p-2 flex-grow" />
-      <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 hover:text-gray-100">Create
+      <button type="submit" class="bg-green-800 text-white py-2 px-4 rounded hover:bg-green-900 hover:text-gray-100">Create
         Shelf</button>
     </form>
   </div>
@@ -21,10 +21,10 @@
   {{#each shelves}}
   <div class="my-shelves border p-4 mb-4 ">
     <h3 class="text-2xl mb-2">{{this.name}}</h3>
-    <button class="delete-shelf-button delete-book-button bg-gray-500 text-white py-2 px-4 rounded mt-2 hover:bg-red-700 hover:text-gray-100"
+    <button class="delete-shelf-button bg-gray-500 text-white py-2 px-4 rounded mt-2 hover:bg-red-700 hover:text-gray-100"
       data-shelf-id="{{this.id}}">Delete Shelf</button>
     <button
-      class="edit-shelf-button bg-blue-500 text-white py-2 px-4 rounded ml-2 hover:bg-blue-700 hover:text-gray-100"
+      class="edit-shelf-button bg-green-800 text-white py-2 px-4 rounded hover:bg-green-900 hover:text-gray-100"
       data-shelf-id="{{this.id}}">Edit Shelf</button>
 
     <!-- Updated structure for the Books loop -->
