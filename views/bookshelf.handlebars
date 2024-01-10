@@ -21,7 +21,7 @@
   {{#each shelves}}
   <div class="my-shelves border p-4 mb-4 ">
     <h3 class="text-2xl mb-2">{{this.name}}</h3>
-    <button class="delete-shelf-button bg-red-500 text-white py-2 px-4 rounded hover:bg-red-700 hover:text-gray-100"
+    <button class="delete-shelf-button delete-book-button bg-gray-500 text-white py-2 px-4 rounded mt-2 hover:bg-red-700 hover:text-gray-100"
       data-shelf-id="{{this.id}}">Delete Shelf</button>
     <button
       class="edit-shelf-button bg-blue-500 text-white py-2 px-4 rounded ml-2 hover:bg-blue-700 hover:text-gray-100"
@@ -72,8 +72,8 @@
     </form>
 
     <!-- Button to delete a Book -->
-    <button class="delete-book-button bg-gray-500 text-white py-2 px-4 rounded mt-2 hover:bg-gray-700 hover:text-gray-100"
-      data-book-id="{{this.id}}">Delete</button>
+    <button class="delete-book-button bg-gray-500 text-white py-2 px-4 rounded mt-2 hover:bg-red-700 hover:text-gray-100"
+      data-book-id="{{this.id}}">Delete Book</button>
   </div>
   {{/each}}
 </div>
