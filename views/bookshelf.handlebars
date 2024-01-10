@@ -1,86 +1,86 @@
 {{#if logged_in}}
-{{log user}}
-{{log books}}
-{{log shelves}}
+  {{log user}}
+  {{log books}}
+  {{log shelves}}
 
-<div class="grid grid-cols-1 gap-4 flex flex-col items-center pt-8">
-  <div class="flex flex-col items-center"> <!-- New container for h2 and form -->
-    <h2 class="text-4xl mb-4">{{user.username}}'s Library</h2>
-    {{! Form to create a new shelf }}
-    <form id="add-shelf-form" class="mb-4 flex">
-      <label for="shelf-name" class="mr-1">Create a New Shelf:</label>
-      <input type="text" id="shelf-name" name="name" required class="border border-gray-300 rounded p-2 flex-grow" />
-      <button type="submit" class="bg-green-800 text-white py-2 px-4 rounded hover:bg-green-900 hover:text-gray-100">Create
-        Shelf</button>
-    </form>
-  </div>
-</div>
-
-
-<div>
-  {{#each shelves}}
-  <div class="my-shelves border p-4 mb-4 ">
-    <h3 class="text-2xl mb-2">{{this.name}}</h3>
-    <button class="delete-shelf-button bg-gray-500 text-white py-2 px-4 rounded mt-2 hover:bg-red-700 hover:text-gray-100"
-      data-shelf-id="{{this.id}}">Delete Shelf</button>
-    <button
-      class="edit-shelf-button bg-green-800 text-white py-2 px-4 rounded hover:bg-green-900 hover:text-gray-100"
-      data-shelf-id="{{this.id}}">Edit Shelf</button>
-
-    <!-- Updated structure for the Books loop -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      {{#each this.Books}}
-      <div class="saved-books border p-4 mb-4 flex flex-col items-center">
-        <img src="https:covers.openlibrary.org/b/olid/{{this.cover_edition_key}}-M.jpg" class="mb-2" />
-        <h3 class="text-xl mb-2"><strong>{{this.title}}</strong></h3>
-        <p>{{this.first_sentence}}</p>
-        <p><em>(First published in {{this.first_publish_year}})</em></p>
-        <p><strong>Avg. Rating: </strong>{{this.ratings_average}} out of 5</p>
-        <p><strong>Author: </strong> {{this.author_name}}</p>
-        <button
-          class="remove-from-shelf-button bg-gray-500 text-white py-2 px-4 rounded mt-2 hover:bg-red-700 hover:text-gray-100"
-          data-book-id="{{id}}">Remove from Shelf</button>
-      </div>
-      {{/each}}
+  <div class="grid grid-cols-1 gap-4 flex flex-col items-center pt-8">
+    <div class="flex flex-col items-center"> <!-- New container for h2 and form -->
+      <h2 class="text-4xl mb-4">{{user.username}}'s Library</h2>
+      {{! Form to create a new shelf }}
+      <form id="add-shelf-form" class="mb-4 flex">
+        <label for="shelf-name" class="mr-1">Create a New Shelf:</label>
+        <input type="text" id="shelf-name" name="name" required class="border border-gray-300 rounded p-2 flex-grow" />
+        <button type="submit" class="bg-green-800 text-white py-2 px-4 rounded hover:bg-green-900 hover:text-gray-100">Create
+          Shelf</button>
+      </form>
     </div>
   </div>
-  {{/each}}
-</div>
 
-<h2 class="text-2xl mb-2">Your Saved Books</h2>
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-  {{#each books}}
-  <div class="saved-books border p-4 mb-4 flex flex-col items-center">
-    <img src="https:covers.openlibrary.org/b/olid/{{this.cover_edition_key}}-M.jpg" class="mb-1" />
-    <h3 class="text-xl mb-2"><strong>{{this.title}}</strong></h3>
-    <p>{{this.first_sentence}}</p>
-    <p><em>(First published in {{this.first_publish_year}})</em></p>
-    <p><strong>Avg. Rating: </strong>{{this.ratings_average}} out of 5</p>
-    <p><strong>Author: </strong> {{this.author_name}}</p>
-    <button class="show-add-to-shelf-form-button bg-green-800 text-white py-2 px-4 rounded hover:bg-green-900 hover:text-gray-100"
-      data-book-id="{{this.id}}">Add to New Shelf</button>
 
-    <!-- Form to add a book to a shelf (initially hidden) -->
-    <form class="add-to-shelf-form hidden" data-book-id="{{this.id}}">
-      <label for="shelf-selector-{{this.id}}" class="mr-2">Select Shelf:</label>
-      <select id="shelf-selector-{{this.id}}" name="shelfId" required class="border border-gray-300 rounded p-2">
-        {{#each ../shelves}}
-        <option value="{{this.id}}">{{this.name}}</option>
+  <div>
+    {{#each shelves}}
+    <div class="my-shelves border p-4 mb-4 ">
+      <h3 class="text-2xl mb-2">{{this.name}}</h3>
+      <button class="delete-shelf-button bg-gray-500 text-white py-2 px-4 rounded mt-2 hover:bg-red-700 hover:text-gray-100"
+        data-shelf-id="{{this.id}}">Delete Shelf</button>
+      <button
+        class="edit-shelf-button bg-green-800 text-white py-2 px-4 rounded hover:bg-green-900 hover:text-gray-100"
+        data-shelf-id="{{this.id}}">Edit Shelf</button>
+
+      <!-- Updated structure for the Books loop -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {{#each this.Books}}
+        <div class="saved-books border p-4 mb-4 flex flex-col items-center">
+          <img src="https:covers.openlibrary.org/b/olid/{{this.cover_edition_key}}-M.jpg" class="mb-2" />
+          <h3 class="text-xl mb-2"><strong>{{this.title}}</strong></h3>
+          <p>{{this.first_sentence}}</p>
+          <p><em>(First published in {{this.first_publish_year}})</em></p>
+          <p><strong>Avg. Rating: </strong>{{this.ratings_average}} out of 5</p>
+          <p><strong>Author: </strong> {{this.author_name}}</p>
+          <button
+            class="remove-from-shelf-button bg-gray-500 text-white py-2 px-4 rounded mt-2 hover:bg-red-700 hover:text-gray-100"
+            data-book-id="{{id}}">Remove from Shelf</button>
+        </div>
         {{/each}}
-      </select>
-      <button type="submit" class="bg-yellow-500 text-white py-2 px-4 rounded hover:bg-yellow-700 hover:text-gray-100">Add to Shelf</button>
-    </form>
-
-    <!-- Button to delete a Book -->
-    <button class="delete-book-button bg-gray-500 text-white py-2 px-4 rounded mt-2 hover:bg-red-700 hover:text-gray-100"
-      data-book-id="{{this.id}}">Delete Book</button>
+      </div>
+    </div>
+    {{/each}}
   </div>
-  {{/each}}
-</div>
+
+  <h2 class="text-2xl mb-2">Your Saved Books</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    {{#each books}}
+    <div class="saved-books border p-4 mb-4 flex flex-col items-center">
+      <img src="https:covers.openlibrary.org/b/olid/{{this.cover_edition_key}}-M.jpg" class="mb-1" />
+      <h3 class="text-xl mb-2"><strong>{{this.title}}</strong></h3>
+      <p>{{this.first_sentence}}</p>
+      <p><em>(First published in {{this.first_publish_year}})</em></p>
+      <p><strong>Avg. Rating: </strong>{{this.ratings_average}} out of 5</p>
+      <p><strong>Author: </strong> {{this.author_name}}</p>
+      <button class="show-add-to-shelf-form-button bg-green-800 text-white py-2 px-4 rounded hover:bg-green-900 hover:text-gray-100"
+        data-book-id="{{this.id}}">Add to New Shelf</button>
+
+      <!-- Form to add a book to a shelf (initially hidden) -->
+      <form class="add-to-shelf-form hidden" data-book-id="{{this.id}}">
+        <label for="shelf-selector-{{this.id}}" class="mr-2">Select Shelf:</label>
+        <select id="shelf-selector-{{this.id}}" name="shelfId" required class="border border-gray-300 rounded p-2">
+          {{#each ../shelves}}
+          <option value="{{this.id}}">{{this.name}}</option>
+          {{/each}}
+        </select>
+        <button type="submit" class="bg-yellow-500 text-white py-2 px-4 rounded hover:bg-yellow-700 hover:text-gray-100">Add to Shelf</button>
+      </form>
+
+      <!-- Button to delete a Book -->
+      <button class="delete-book-button bg-gray-500 text-white py-2 px-4 rounded mt-2 hover:bg-red-700 hover:text-gray-100"
+        data-book-id="{{this.id}}">Delete Book</button>
+    </div>
+    {{/each}}
+  </div>
 {{else}}
-<p class="login-prompt">You must log in to view your bookshelf.
+  <p class="login-prompt">You must log in to view your bookshelf.
   <a href="/login" class="text-blue-500">Login</a>
-</p>
+  </p>
 {{/if}}
 
 <script src="/js/bookshelfFunctions/deleteShelf.js"></script>
