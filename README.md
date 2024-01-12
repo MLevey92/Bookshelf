@@ -20,8 +20,7 @@ Do it
 
 ## Usage
 
-Link to project: FILL THIS IN ONCE DEPLOYED
-Do it
+Link to project: [](https://book-shelf-ec28e1e38c1b.herokuapp.com)
 
 ## API Documentation
 
