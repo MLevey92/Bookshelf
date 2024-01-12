@@ -141,7 +141,7 @@ MIT
 
 !["You must log in to view your bookshelf"](./public/assets/login-notice.png)
 
-The link for logging in will take you to /logim, where you can create an account or login with your existing credentials
+The link for logging in will take you to /login, where you can create an account or login with your existing credentials
 
 ![Login/New User page](./public/assets/login.png)
 
