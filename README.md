@@ -151,9 +151,13 @@ Once you have logged in or created an account, the link will take you to the das
 
 The user also has the option to create, edit, and delete additional shelves to organize their books.
 
-![New Shelf options](./public/assets/create-shelf.png)
+![Create new shelf](./public/assets/create-shelf.png)
 
-To add a book, you can utilize the application's search function, which allows you to search a 3rd party API [OpenLibrary](https://openlibrary.org/developers/api) by Title or Author. From here, you can add books to your shelf.
+![Edit newest shelf](./public/assets/edit-shelf.png)
+
+![Add saved book to newest shelf](./public/assets/add-to-new-shelf.png)
+
+To find and save more books, you can utilize the application's search function, which allows you to search a 3rd party API [OpenLibrary](https://openlibrary.org/developers/api) by Title or Author. From here, you can add books to your shelf.
 
 ![Book search function](./public/assets/book-search.png)
 
