@@ -93,11 +93,13 @@ title, first_publish_year, author_key, user_id, shelf_id.
 cover_edition_key, ratings_average, first_sentence, author_name
 
 ### /api/books/:id
+
 DELETE request will delete a book by its given id
 
 ## Shelf Routes
 
 ### /api/shelves
+
 GET request returns all shelves
 
 POST request creates a new shelf with the request body:
@@ -108,6 +110,7 @@ POST request creates a new shelf with the request body:
     }
 
 ### /api/shelves/:id
+
 DELETE request will delete a shelf by its id
 
 PUT request will update a shelf's name with the request body:
@@ -116,17 +119,48 @@ PUT request will update a shelf's name with the request body:
       "name": "Updated Shelf Name"
     }
 
-
 ## License
 
 MIT
 
 ## Contributors
 
-- Jessica ~Github: Jessmica11 
-- Michael ~Email: mlevey92@gmail.com 
-- Jonathan ~Email: jonathanacciarito@gmail.com
-- Blaze ~Github: Concentratedcreatives
-- Colin ~Email: Crent0699@mail.com 
+- [Jessica (GitHub)](https://github.com/Jessmica11)
+- [Michael (Email)](mailto:mlevey92@gmail.com)
+- [Jonathan (Email)](mailto:jonathanacciarito@gmail.com)
+- [Blaze (GitHub)](https://github.com/Concentratedcreatives)
+- [Colin (Email)](mailto:Crent0699@mail.com)
 
 ## Screenshots
+
+"/" Homepage, which shows the initial API calls for the book covers and all the book data
+
+![Homepage view of "Bookshelf" the app](./public/assets/homescreen.png)
+
+"/bookshelf" Which acts as the user dashboard. If you aren't logged in, you will see text encouraging you to do so
+
+!["You must log in to view your bookshelf"](./public/assets/login-notice.png)
+
+The link for logging in will take you to /logim, where you can create an account or login with your existing credentials
+
+![Login/New User page](./public/assets/login.png)
+
+Once you have logged in or created an account, the link will take you to the dashboard or "Bookshelf" section. This is where a user's books are saved and kept for each login.
+
+![Bookshelf dashboard](./public/assets/bookshelf.png)
+
+The user also has the option to create, edit, and delete additional shelves to organize their books.
+
+![New Shelf options](./public/assets/create-shelf.png)
+
+To add a book, you can utilize the application's search function, which allows you to search a 3rd party API [OpenLibrary](https://openlibrary.org/developers/api) by Title or Author. From here, you can add books to your shelf.
+
+![Book search function](./public/assets/book-search.png)
+
+Users can also manage their own accounts, and see information about when it was created.
+
+![Account management](./public/assets/manage-account.png)
+
+Our app also features mobile-friendly UI design, with a dropdown menu that collapses into a hamburger menu in the main header. The layout also collapses down for better usage.
+
+![Mobile-friendliness](./public/assets/mobile-UI.png)
